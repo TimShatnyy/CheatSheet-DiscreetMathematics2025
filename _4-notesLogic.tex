@@ -1,0 +1,39 @@
+\subsection*{\textit{Logic}}
+\tsIdea{CNF and DNF equivalence \& difference}{
+    When literals, negation $\neg$ and only exactly one operator among $\land, \lor$ shows up in a formula, then it is in both CNF and DNF. Negation applied to non-literals → neither CNF or DNF.
+    \\
+    For example: CNF \(\equiv A \land B \land \lnot C \equiv (A \land B \land \lnot C) \equiv \) DNF
+}
+\newline
+\tsIdea{Disproving}{
+    Find a counter example that shows that a given statement does not hold generally. For example disproving \(\mathcal K \models K \Longrightarrow\mathcal K \vdash_{res} K\):
+    \(\tsPoint\) Consider $\mathcal K:=\varnothing$ and $K:= \{A,\neg A\}$.
+    \\
+    $K$ corresponds to the formula $A\lor \neg A\equiv \top$ and is a tautology. Hence $\models K$, and $\mathcal K\models K$ also holds.
+    \\
+    Since our clause set is empty, no clauses can be derived. In particular, $K$ cannot be derived, i.e. $\mathcal K\not \vdash_{res} K$
+}
+\newline
+\tsIdea{Soundness of the rule $\vdash_r$}{
+    \textbf{Soundness.}
+    Let $F_\Gamma,F_\Delta$ be the propositional formulas corresponding to $\Gamma,\Delta$.
+    Then
+    \[
+        \Gamma \models \Delta
+        \iff
+        F_\Gamma \to F_\Delta \text{ is a tautology}.
+    \]
+    Since
+    \[
+        F_\Gamma \to F_\Delta \equiv \neg F_\Gamma \lor F_\Delta \equiv \top,
+    \]
+    the rule is sound.
+}
+\newline
+\tsIdea{Proving the statement with resolution calculus}{
+    Example: prove $((A \land B) \rightarrow C) \land (C \rightarrow D) \models (A \land B) \rightarrow D$ (using resolution calculus)
+    \\
+    To prove the given statement we can show that $\{((A \land B) \rightarrow C), (C \rightarrow D), \lnot((A \land B) \rightarrow D)\}$ is unsatisfiable
+    \\
+    (By \textbf{Lemma 6.3} we know $\{F_1, ..., F_k\} \vDash G $ is equivalent to $\{F_1, ..., F_k, \neg G\} \ is \ unsatisfiable$.)
+}

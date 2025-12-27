@@ -1,0 +1,68 @@
+\subsection*{\textit{Modular Arithmetic}}
+\tsIdea{Computing modulos with big exponents}{
+    Compute $a^N \pmod{p}.$
+    \(\tsPoint\) Find a small $k \text{ such that } a^k \equiv r \pmod{p}$.
+    \(\tsPoint\) Write $N = kq \;(+\; r_0).$
+    \[
+        a^N = (a^k)^q \cdot a^{r_0}
+        \equiv r^q \cdot a^{r_0} \pmod{p}.
+    \]
+    Evaluate and conclude. Example:
+    \\
+    \(
+    2^6 \equiv -1 \pmod{13}, \quad 4536 = 6\cdot756
+    \Rightarrow 2^{4536} \equiv (-1)^{756} \equiv 1 \pmod{13}.
+    \)
+}
+\newline
+\tsIdea{GCD finding}{
+    \(
+    a^n \equiv 0 \pmod{A}
+    \Rightarrow \gcd(A,B+a^n)=\gcd(A,B).
+    \)
+    \(\tsPoint\) $\gcd(A,B)=\gcd(A,B\bmod A)$
+}
+\newline
+\tsIdea{Euclidean Algorithm}{
+    \(
+    \gcd(A,B)=\gcd(B,A\bmod B).
+    \)
+    \(
+    \tsPoint A = Bq + r,\quad 0\le r<B.
+    \)
+    \(
+    \tsPoint \gcd(A,B)=\gcd(B,r).
+    \)
+    \(
+    \tsPoint \text{Repeat until } r=0.
+    \)
+}
+\newline
+\tsIdea{Sophie Germain identity to find composite polynomials}{
+    \(a^4+4b^4=(a^2-2ab+2b^2)(a^2+2ab+2b^2).\)
+}
+\newline
+\tsIdea{Finite many solutions for \(\varphi(x) = n\) for \(x \in \mathbb{N}\)}{
+    Let $n \in \mathbb{N}$ be fixed, and suppose $x \in \mathbb{N}$ satisfies
+    \[
+        \varphi(x) = n.
+    \]
+    Write the prime factorization of $x$ as
+    \[
+        x = \prod_{i=1}^r p_i^{e_i},
+    \]
+    where the $p_i$ are distinct primes and $e_i \ge 1$.
+    Using the formula for Euler’s totient function, we obtain
+    \[
+        n = \varphi(x) = \prod_{i=1}^r (p_i - 1)p_i^{e_i - 1}.
+    \]
+    Hence, for every prime divisor $p_i$ of $x$, we have
+    \[
+        p_i - 1 \mid n.
+    \]
+    Since $n$ has only finitely many divisors, there are only finitely many possible primes $p_i$ that can divide $x$.
+
+    For each such prime $p_i$, the exponent $e_i$ is bounded: indeed, increasing $e_i$ strictly increases the value of $(p_i - 1)p_i^{e_i - 1}$ and therefore increases $\varphi(x)$. Thus only finitely many choices of the exponents $e_i$ are possible.
+
+    Consequently, there are only finitely many natural numbers $x$ such that $\varphi(x) = n$.
+}

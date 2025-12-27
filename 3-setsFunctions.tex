@@ -1,0 +1,737 @@
+\subsection{Sets}
+\tsDef{3.2 (Equal sets)}{
+    For sets $A$ and $B$,
+    \(
+    A = B \;\Longleftrightarrow\; \forall x \,(x \in A \iff x \in B).
+    \)
+}
+\newline
+\tsLem{3.1 (Equality of set elemetns and ord. pairs)}{
+    For any sets $A$ and $B$,
+    \(
+    \{A\} = \{B\} \;\Longrightarrow\; A = B.
+    \)
+    \\
+    \textbf{Ordered pairs:}
+    \(
+    (a,b) = (c,d) \;\Longleftrightarrow\; a = c \;\wedge\; b = d.
+    \)
+    \\
+    \textbf{Odered pairs via sets:}
+    \(
+    (a,b) := \bigl\{ \{a\}, \{a,b\} \bigr\}.
+    \)
+}
+\newline
+\tsDef{3.3 (Subset)}{
+    \(
+    A \subseteq B \;\Longleftrightarrow\; \forall x \,(x \in A \Rightarrow x \in B).
+    \)
+}
+\newline
+\tsLem{3.2 (Sets equality and subsets)}{
+    \(
+    A = B \;\Longleftrightarrow\; (A \subseteq B) \wedge (B \subseteq A).
+    \)
+    Equivalently: \\
+    \(
+    \forall x \,\bigl((x \in A \Rightarrow x \in B) \wedge (x \in B \Rightarrow x \in A)\bigr)
+    \;\Leftrightarrow\;
+    \forall x \,(x \in A \iff x \in B).
+    \)
+}
+\newline
+\tsLem{3.3 (Transitivity of subsets)}{
+    For all sets $A,B,C$,
+    \(
+    A \subseteq B \;\wedge\; B \subseteq C \;\Longrightarrow\; A \subseteq C.
+    \)
+}
+\newline
+\tsDef{3.4 (Union and Intersection)}{
+    \(
+    A \cup B := \{x \mid x \in A \vee x \in B\},
+    \)
+    \(
+    A \cap B := \{x \mid x \in A \wedge x \in B\}.
+    \)
+    \\
+    \textbf{Families of Sets:}
+    Let $\mathcal{A}$ be a set of sets:\\
+    \(
+    \bigcap \mathcal{A} := \{x \mid x \in A \text{ for all } A \in \mathcal{A}\},
+    \)
+    \(
+    \bigcup \mathcal{A} := \{x \mid x \in A \text{ for some } A \in \mathcal{A}\}.
+    \)
+    \\
+    \textbf{Example:}
+    \\
+    \(
+    \mathcal{A} = \bigl\{\{a,b,c\}, \{a,c\}, \{a,b,c,f\}, \{a,c,d\}\bigr\},
+    \)
+    \\
+    \(
+    \bigcup \mathcal{A} = \{a,b,c,d,e,f\},
+    \qquad
+    \bigcap \mathcal{A} = \{a,c\}.
+    \)
+    \\
+    If $I$ is an index set and $\mathcal{A} = \{A_i \mid i \in I\}$, then
+    \(
+    \bigcap_{i \in I} A_i,
+    \
+    \bigcup_{i \in I} A_i.
+    \)
+}
+\newline
+\tsDef{3.5 (Set Difference)}{
+    The difference of sets $B$ and $A$ is
+    \(
+    B \setminus A := \{x \in B \mid x \notin A\}.
+    \)
+}
+\newline
+\tsDef{3.6 (Empty Set)}{
+    A set is called \emph{empty} if it contains no elements:
+    \(
+    \forall x \,(x \notin A).
+    \)
+}
+\newline
+\tsLem{3.5}{
+    There is exactly \textbf{one} empty set, denoted $\varnothing$ or $\{\}$.
+}
+\newline
+\tsLem{3.6}{
+    The empty set is a subset of every set:
+    \(
+    \forall A \;(\varnothing \subseteq A).
+    \)
+    \\
+    \textbf{Construction of natural numbers:}
+    \(
+    S(n) := n \cup \{n\} \ \text{(rec. sucsessor)}.
+    \)
+}
+\newline
+\tsDef{3.7 (Power Set)}{
+    The power set of a set $A$, denoted $\mathcal{P}(A)$, is the set of all subsets of $A$:
+    \(
+    \mathcal{P}(A) := \{S \mid S \subseteq A\}.
+    \)
+    If $|A| = k$, then
+    \(
+    |\mathcal{P}(A)| = 2^k.
+    \)
+    In particular, for a set with $k$ elements, each element may be
+    \emph{included} or \emph{excluded}, giving
+    \(
+    2 \times 2 \times \cdots \times 2 = 2^k
+    \)
+    possible subsets.
+    \\
+    \textbf{Example (bit-mask intuition for $\{a,b\}$):}
+    \(
+    {\scriptsize
+            \begin{array}{ccl}
+                00 & \longleftrightarrow & \varnothing \\
+                01 & \longleftrightarrow & \{b\}       \\
+                10 & \longleftrightarrow & \{a\}       \\
+                11 & \longleftrightarrow & \{a,b\}
+            \end{array}
+        }
+    \)
+    % \subsection*{Counting Principle}
+    % If a process has:
+    % \begin{itemize}[noitemsep, topsep=0pt]
+    %     \item $a$ choices for step 1,
+    %     \item $b$ choices for step 2,
+    %     \item $c$ choices for step 3,
+    % \end{itemize}
+    % then the total number of outcomes is
+    % \(
+    % a \times b \times c.
+    % \)
+}
+% \newline
+\subsection{Relations}
+\tsDef{3.8 (Cartesian product)}{
+    The Cartesian product $A \times B$ of sets $A$ and $B$ is the set of all ordered pairs with first component from $A$ and second from $B$:
+    \(
+    A \times B := \{(a,b) \mid a \in A,\ b \in B\}.
+    \)
+    The cardinality satisfies
+    \(
+    |A \times B| = |A| \cdot |B|.
+    \)
+    \\
+    \textbf{More generally:}
+    \(
+    \mathop{\scalebox{1.6}{$\times$}}_{i=1}^k A_i
+    :=
+    \{(a_1,\dots,a_k) \mid a_i \in A_i \text{ for } 1 \le i \le k\}.
+    \)
+    \\
+    The Cartesian product is \emph{not associative}, since elements are ordered tuples.
+    \\
+    \textbf{Connection to power sets:}
+    \\
+    If
+    \(
+    A = \{a,b,c\}, \ |A|=3,
+    \)
+    then each element may be either \emph{in} or \emph{out}, giving
+    \(
+    \{0,1\}^3 = \{0,1\} \times \{0,1\} \times \{0,1\},
+    \)
+    which represents all subsets of $A$.
+    \\
+    \textbf{Another example:}
+    \\
+    \(
+    A_1 = \{0,1\}, \ A_2 = \{d,e\},
+    \)
+    \(
+    A_1 \times A_2 = \{(0,d),(0,e),(1,d),(1,e)\}.
+    \)
+}
+\newline
+\tsDef{3.9 (Relation)}{
+    A (binary) relation $\rho$ from a set $A$ to a set $B$ is a subset of $A \times B$.
+    \\
+    If $A=B$, then $\rho$ is called a relation \emph{on} $A$.
+    \\
+    \textbf{Notation:}
+    \(
+    (a,b) \in \rho \;\Rightarrow\; a \,\rho\, b,
+    \
+    (a,b) \notin \rho \;\Rightarrow\; a \not\!\rho\, b.
+    \)
+    \\
+    For any set $S$, any subset $\rho \subseteq S \times S$ is a relation on $S$.
+    \\
+    There are
+    \(
+    2^{n^2}
+    \)
+    relations on a set of cardinality $n$, since
+    \(
+    |S \times S| = n^2
+    \ \text{and} \
+    |\mathcal{P}(S \times S)| = 2^{n^2}.
+    \)
+    \\
+    % \textbf{Relations as Matrices:}
+    % \\
+    % Relations can be represented by $0$–$1$ matrices, analogous to adjacency matrices for graphs. Combining relations using set operations
+    % \(
+    % \cap,\ \cup,\ \setminus
+    % \)
+    % corresponds to applying logical operations
+    % \(
+    % \wedge,\ \vee,\ \neg
+    % \)
+    % entrywise to matrices.
+    % \\
+    \textbf{Examples on $\mathbb{Z}$:}
+    \begin{itemize}[noitemsep, topsep=-3pt]
+        \item $\leq \;\cup\; \geq$ is the complete relation $\mathbb{Z} \times \mathbb{Z}$.
+        \item $\leq \;\cap\; \geq$ is the identity relation:
+              \(
+              \{(a,a) \mid a \in \mathbb{Z}\}.
+              \)
+    \end{itemize}
+}
+\tsDef{3.11 (Inverse Relation)}{
+    The inverse relation of $\rho$ is
+    \(
+    \rho^{-1} := \{(b,a) \mid (a,b) \in \rho\}.
+    \)
+    \\
+    Equivalently,
+    \(
+    b \,\rho^{-1}\, a \;\Longleftrightarrow\; a \,\rho\, b.
+    \)
+    \\
+    \textbf{Interpretations:}
+    \begin{itemize}[noitemsep, topsep=-3pt]
+        \item In graphs: reversing all edge directions.
+        \item In matrices: taking the transpose.
+    \end{itemize}
+}
+\tsDef{3.12 (Composition of Relations)}{
+    Let $\rho \subseteq A \times B$ and $\sigma \subseteq B \times C$.
+    The composition $\sigma \circ \rho$ is defined by
+    \(
+    \sigma \circ \rho
+    :=
+    \{(a,c) \mid \exists b \ ((a,b) \in \rho \wedge (b,c) \in \sigma)\}.
+    \)
+    Composition is associative:
+    \(
+    \rho \circ (\sigma \circ \tau) = (\rho \circ \sigma) \circ \tau.
+    \)
+}
+\newline
+\tsLem{3.8}{
+    Let $\rho$ be a relation from $A$ to $B$ and $\sigma$ a relation from $B$ to $C$.
+    Then
+    \(
+    (\sigma \circ \rho)^{-1} = \rho^{-1} \circ \sigma^{-1}.
+    \)
+}
+\subsection{Properties of Relations}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Name} & \textbf{Formula}                             & \textbf{Set} & \textbf{Example} \\
+        \midrule
+        Reflexive
+                      & $a\rho a$
+                      & $\mathrm{id} \subseteq \rho$
+                      & $\mathrm{id},\, \geq$                                                          \\
+
+        Irreflexive
+                      & $\neg(a\rho a)$
+                      & $\mathrm{id} \cap \rho = \varnothing$
+                      & $\neq,\, >$                                                                    \\
+
+        Symmetric
+                      & $a\rho b \iff b\rho a$
+                      & $\rho = \hat{\rho}$
+                      & $\mathrm{id},\, \equiv\ (\mathrm{mod}\ m)$                                     \\
+
+        Antisymmetric
+                      & $a\rho b \wedge b\rho a \rightarrow a=b$
+                      & $\rho \cap \hat{\rho} \subseteq \mathrm{id}$
+                      & $\geq,\, \mid$                                                                 \\
+
+        Transitive
+                      & $a\rho b \wedge b\rho c \rightarrow a\rho c$
+                      & $\rho^{2} \subseteq \rho$
+                      & $\equiv\ (\mathrm{mod}\ m),\, >$                                               \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+% \tsDef{3.13 (Reflexive Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{reflexive} if
+%     \(
+%     \forall a \in A,\ a \,\rho\, a.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \mathrm{id}_A \subseteq \rho.
+%     \)
+% }
+% \newline
+% \tsDef{3.14 (Irreflexive Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{irreflexive} if
+%     \(
+%     \forall a \in A,\ a \not\!\rho\, a.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \rho \cap \mathrm{id}_A = \varnothing.
+%     \)
+% }
+% \newline
+% \tsDef{3.15 (Symmetric Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{symmetric} if
+%     \(
+%     a \,\rho\, b \;\Leftrightarrow\; b \,\rho\, a
+%     \ \forall a,b \in A.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \rho = \rho^{-1}.
+%     \)
+%     \\
+%     Interpretations:
+%     \begin{itemize}[noitemsep, topsep=-3pt]
+%         \item In matrix form: the matrix of $\rho$ is symmetric.
+%         \item In graphs: the graph is undirected (possibly with loops).
+%     \end{itemize}
+% }
+% \tsDef{3.16 (Antisymmetric Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{antisymmetric} if
+%     \(
+%     (a \,\rho\, b \;\wedge\; b \,\rho\, a) \;\Rightarrow\; a = b
+%     \ \forall a,b \in A.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \rho \cap \rho^{-1} \subseteq \mathrm{id}_A.
+%     \)
+% }
+% \newline
+% \tsDef{3.17 (Transitive Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{transitive} if
+%     \(
+%     (a \,\rho\, b \;\wedge\; b \,\rho\, c) \;\Longrightarrow\; a \,\rho\, c.
+%     \)
+% }
+% \newline
+% \newline
+\tsLem{3.9}{
+    A relation $\rho$ is transitive if and only if
+    \(
+    \rho^2 \subseteq \rho,
+    \)
+    where $\rho^2 = \rho \circ \rho$.
+}
+\newline
+\tsDef{3.18 (Transitive Closure)}{
+    The \emph{transitive closure} of a relation $\rho$ on a set $A$, denoted $\rho^{*}$, is defined by
+    \(
+    \rho^{*} := \bigcup_{n \in \mathbb{N}_{>0}} \rho^{n}.
+    \)
+}
+\newline
+\subsection{Equivalence Relation}
+\tsDef{3.19 (Equivalence Relation)}{
+    An equivalence relation on a set $A$ is a relation that is
+    \emph{reflexive}, \emph{symmetric}, and \emph{transitive}.
+}
+\newline
+\tsDef{3.20 (Equivalence Class)}{
+    Let $\theta$ be an equivalence relation on a set $A$, and let $a \in A$.
+    The \emph{equivalence class} of $a$ is
+    \(
+    [a]_{\theta} := \{\, b \in A \mid b \,\theta\, a \,\}.
+    \)
+    \\
+    \textbf{Example:} (congruence modulo $3$ on $\mathbb{Z}$):
+    \(
+    [0] = \{\dots,-6,-3,0,3,6,\dots\},
+    \)
+    \(
+    [1] = \{\dots,-5,-2,1,4,7,\dots\},
+    \)
+    \(
+    [2] = \{\dots,-4,-1,2,5,8,\dots\}.
+    \)
+}
+\newline
+\tsLem{3.10}{
+    The intersection of two equivalence relations on the same set is an equivalence relation.
+}
+\newline
+\tsDef{3.21 (Partition)}{
+    A \emph{partition} of a set $A$ is a family $\{S_i \mid i \in I\}$ of subsets of $A$
+    such that
+    \(
+    S_i \cap S_j = \varnothing \ (i \neq j),
+    \
+    \bigcup_{i \in I} S_i = A.
+    \)
+}
+\newline
+\tsDef{3.22 (Quotient Set)}{
+    Let $\theta$ be an equivalence relation on a set $A$.
+    The set of equivalence classes is denoted by
+    \(
+    A / \theta := \{ [a]_{\theta} \mid a \in A \},
+    \)
+    and is called the \emph{quotient set} of $A$ modulo $\theta$.
+}
+\newline
+\tsThe{3.11}{
+    Let $\theta$ be an equivalence relation on a set $A$.
+    Then the set $A/\theta$ of equivalence classes forms a partition of $A$.
+}
+\newline
+\subsection{Partial Order Relations}
+\tsDef{3.23 (Partial Order)}{
+    A \emph{partial order} on a set $A$ is a relation that is
+    \emph{reflexive}, \emph{antisymmetric}, and \emph{transitive}.
+    \\
+    A set equipped with a partial order $\preceq$ is called a
+    \emph{partially ordered set} (poset), denoted $(A,\preceq)$.
+    \\
+    \textbf{Examples:}
+    \(
+    (\mathcal{P}(A), \subseteq) \text{ is a poset},
+    \)
+    \(
+    (\mathbb{N}_{\ge 0}, \mid) \text{ is a poset},
+    \)
+    \(
+    (\mathbb{Z}, \preceq) \text{ is a poset}.
+    \)
+    \\
+    Note:
+    \(
+    a \prec b \;\Longleftrightarrow\; a \preceq b \;\wedge\; a \ne b.
+    \)
+}
+\newline
+\tsDef{3.24 (Comparable Elements)}{
+    In a poset $(A,\preceq)$, two elements $a,b \in A$ are called \emph{comparable} if
+    \(
+    a \preceq b \ \text{or} \ b \preceq a.
+    \)
+    Otherwise, they are called \emph{incomparable}.
+}
+\newline
+\tsDef{3.25 (Total Order)}{
+    Let $(A,\preceq)$ be a poset.
+    If any two elements of $A$ are comparable, then $A$ is called a
+    \emph{totally ordered set} (or \emph{linearly ordered}) by $\preceq$.
+    \\
+    \textbf{Examples:}
+    \(
+    (\mathbb{Z},\le) \ \text{and} \ (\mathbb{Z},\ge)
+    \)
+    are totally ordered,
+    \((\mathcal{P}(A),\subseteq)\) is not totally ordered if $|A|\ge 2$,
+    \(
+    (\mathbb{N},\mid)
+    \) is not totally ordered
+}
+\newline
+\tsDef{3.26 (Covering Relation)}{
+    In a poset $(A,\preceq)$, an element $b$ \emph{covers} $a$ if: \\
+    \(
+    a \prec b \ \text{and there is no } c \text{ with } a \prec c \prec b
+    \)
+    between $a$ and $b$.
+}
+\newline
+\tsDef{3.27 (Hasse Diagram)}{
+    The \emph{Hasse diagram} of a finite poset $(A,\le)$ is the directed graph
+    whose vertices are the elements of $A$, and where there is an edge from
+    $a$ to $b$ if and only if $b$ covers $a$.
+    \\
+    \textbf{Example:}
+    \(
+    (\mathcal{P}(\{a,b,c\}),\subseteq).
+    \)
+}
+\newline
+\tsDef{3.28 (Product Order)}{
+    Let $(A,\preceq_A)$ and $(B,\preceq_B)$ be posets.
+    The product poset $(A\times B,\le)$ is defined by
+    \(
+    (a_1,b_1)\le (a_2,b_2)
+    \;\Longleftrightarrow\;
+    a_1 \preceq_A a_2 \;\wedge\; b_1 \preceq_B b_2.
+    \)
+}
+\newline
+\tsThe{3.12}{
+    If $(A,\preceq_A)$ and $(B,\preceq_B)$ are posets, then
+    \(
+    (A,\preceq_A)\times(B,\preceq_B)
+    \)
+    is a partially ordered set.
+}
+\newline
+\tsThe{3.13}{
+    For posets $(A,\preceq_A)$ and $(B,\preceq_B)$, the relation
+    \(
+    (a_1,b_1)\le_{\text{lex}}(a_2,b_2)
+    \;\Longleftrightarrow\;
+    a_1\prec a_2 \;\vee\; (a_1=a_2 \wedge b_1\preceq_B b_2)
+    \)
+    defines a partial order on $A\times B$.
+}
+\newline
+\tsDef{3.29 (Bounds)}{
+    Let $(A,\preceq)$ be a poset and $S\subseteq A$. For $a\in A$:
+    $\tsPoint$ $a$ is \emph{minimal / maximal} if there is no $b\in A$
+    with $b\prec a$ / $b\succ a$.
+    $\tsPoint$ $a$ is the \emph{least / greatest element} of $A$ if
+    \(
+    a\preceq b \ / \ a\succeq b \ \forall b\in A.
+    \)
+    $\tsPoint$ $a$ is a \emph{lower / upper bound} of $S$ if
+    \(
+    a\preceq b \ / \ a\succeq b \ \forall b\in S.
+    \)
+    $\tsPoint$ $a$ is the \emph{greatest lower bound} /
+    \emph{least upper bound} of $S$ if it is respectively the
+    greatest / least among all lower / upper bounds of $S$.
+}
+\newline
+\tsDef{3.30 (Well-Ordered Set)}{
+    A poset $(A,\preceq)$ is \emph{well-ordered} if it is totally ordered and
+    every nonempty subset of $A$ has a least element.
+    \(\tsPoint\) Every subset of a well-ordered set is also well-ordered.
+}
+\newline
+\tsDef{3.31 (Meet and Join)}{
+    Let $(A,\preceq)$ be a poset and $a,b\in A$.
+    \(\tsPoint\) If $a$ and $b$ have a greatest lower bound, it is called the
+    \emph{meet} and denoted $a\wedge b$.
+    \(\tsPoint\) If $a$ and $b$ have a least upper bound, it is called the
+    \emph{join} and denoted $a\vee b$.
+}
+\newline
+\tsDef{3.32 (Lattice)}{
+    A poset $(A,\preceq)$ in which every pair of elements has both a meet and a
+    join is called a \emph{lattice}.
+}
+\subsection{Functions}
+\tsDef{3.33 (Function)}{
+    A function $f:A\to B$ from domain $A$ to codomain $B$ is a relation from
+    $A$ to $B$ such that:
+    \(\tsPoint\) For every $a\in A$ there exists $b\in B$ with $a\,f\,b$
+    (totality).
+    \(\tsPoint\) For all $a\in A$ and $b,b'\in B$,
+    \(
+    a\,f\,b \wedge a\,f\,b' \;\Longrightarrow\; b=b'
+    \)
+    (well-definedness).
+    We write $f(a)=b$.
+}
+\newline
+\tsDef{3.34}{
+    The set of all functions from $A$ to $B$ is denoted $B^A$.
+}
+\newline
+\tsDef{3.35 (Partial Function)}{
+    A \emph{partial function} satisfies only condition (2) of Definition~3.33.
+}
+\newline
+\tsDef{3.36 (Image of a Set)}{
+    Let $f:A\to B$ be a function and $S\subseteq A$.
+    The image of $S$ under $f$ is
+    \(
+    f(S):=\{f(a)\mid a\in S\}.
+    \)
+}
+\newline
+\tsDef{3.37 (Image of a Function)}{
+    The image of $f$ is
+    \(
+    \operatorname{Im}(f):=f(A).
+    \)
+}
+\newline
+\tsDef{3.38 (Preimage)}{
+    For $T\subseteq B$, the preimage of $T$ under $f$ is
+    \(
+    f^{-1}(T):=\{a\in A\mid f(a)\in T\}.
+    \)
+    \\
+    \textbf{Example:}
+    If $f(x)=x^2$, then
+    \(
+    f^{-1}(\{4,9\})=\{-3,-2,2,3\}.
+    \)
+}
+\newline
+\tsDef{3.39 (Injective, Surjective, Bijective)}{
+    A function $f:A\to B$ is:
+    \(\tsPoint\) \emph{Injective}: if $f(a)=f(a')\Rightarrow a=a'$.
+    \(\tsPoint\) \emph{Surjective}: if $f(A)=B$.
+    \(\tsPoint\) \emph{Bijective}: if it is both injective and surjective.
+    \\
+    A bijection has an inverse function $f^{-1}$.
+}
+\newline
+\tsDef{3.41 (Composition of Functions)}{
+    Let $f:A\to B$ and $g:B\to C$ be functions.
+    \\
+    Composition $g\circ f:A\to C$ is defined by
+    \(
+    (g\circ f)(a)=g(f(a)).
+    \)
+}
+\newline
+\tsLem{3.14}{
+    Function composition is associative:
+    \(
+    (h\circ g)\circ f = h\circ(g\circ f).
+    \)
+}
+\newline
+\tsDef{3.42}{
+    Two sets $A$ and $B$ are called \emph{equinumerous}, denoted $A \sim B$, if there exists a bijection
+    \(
+    f : A \to B.
+    \)
+    Equivalently, $A \sim B$ \(\Leftrightarrow\) $|A| = |B|$.
+    \(\tsPoint\) A set $B$ \emph{dominates} a set $A$, denoted $A \preceq B$, if $A\sim C$ to some subset $C \subseteq B$.
+    Equivalently, there exists an injective function $f : A \to B$.
+    \(\tsPoint\) A set $A$ is called \emph{countable} if $A \preceq \mathbb{N}$, and \emph{uncountable} otherwise.
+    Equivalently, $A$ is countable if there exists an injection $f : A \to \mathbb{N}$.
+}
+\newline
+\tsLem{3.15}{
+    The relation $\sim$ is an equivalence relation.
+    \(\tsPoint\) The relation $\preceq$ is transitive:
+    \(
+    A \preceq B \;\wedge\; B \preceq C \;\Rightarrow\; A \preceq C.
+    \)
+    \(\tsPoint\) If $A \subseteq B$, then $A \preceq B$.
+}
+\newline
+\tsThe{3.16 (Bernstein-Schröder theorem)}{
+    If $A \preceq B$ and $B \preceq A$, then $A \sim B$.
+}
+\newline
+\tsThe{3.17}{
+    A set $A$ is countable if and only if $A$ is finite or $A \sim \mathbb{N}$.
+}
+\newline
+\tsThe{3.18}{
+    The set $\{0,1\}^*$ of all finite binary sequences is countable.
+}
+\newline
+\tsThe{3.19}{
+    The set $\mathbb{N} \times \mathbb{N}$ of ordered pairs of natural numbers is countable.
+}
+\newline
+\tsCor{3.20}{
+    If $A$ and $B$ are countable sets, then their Cartesian product $A \times B$ is countable:
+    \(A \preceq \mathbb{N} \land B \preceq \mathbb{N} \Longrightarrow A \times B \preceq \mathbb{N}\)
+}
+\newline
+\tsCor{3.21}{
+    The set of rational numbers $\mathbb{Q}$ is countable.
+    \\
+    \textbf{Idea:}
+    Every rational number can be written as $\frac{m}{n}$ with $m \in \mathbb{Z}$ and $n \in \mathbb{N}_{>0}$.
+    Thus $\mathbb{Q} \preceq \mathbb{Z} \times \mathbb{N}$, which is countable.
+}
+\newline
+\tsThe{3.22}{
+    Let $A$ and $\{A_i\}_{i \in \mathbb{N}}$ be countable sets, then:
+    \(\tsPoint\) For any $n \in \mathbb{N}$, the Cartesian product $A^n$ is countable.
+    \(\tsPoint\) The union $\bigcup_{i \in \mathbb{N}} A_i$ is countable.
+    \(\tsPoint\) The set $A^*$ of all finite sequences with elements from $A$ is countable.
+}
+\tsDef{3.23}{
+    Let $\{0,1\}^{\mathbb{N}}$ denote the set of infinite binary sequences, equivalently the set of functions
+    \(
+    f : \mathbb{N} \to \{0,1\}.
+    \)
+}
+\newline
+\tsThe{3.23}{
+    The set $\{0,1\}^{\mathbb{N}}$ is uncountable.
+    \\
+    \textbf{Idea:} This follows from \textit{Cantor’s diagonal argument}.
+}
+\newline
+\tsDef{3.44}{
+    A function
+    \(
+    f : \mathbb{N} \to \{0,1\}
+    \)
+    is called \emph{computable} if there exists a program such that, for every $n \in \mathbb{N}$, the program outputs $f(n)$ when given input $n$.
+}
+\newline
+\tsCor{3.24}{
+    There exist uncomputable functions $f : \mathbb{N} \to \{0,1\}$.
+    \\
+    \textbf{Remark.}
+    The Halting Problem gives an explicit example of an uncomputable function.
+}
