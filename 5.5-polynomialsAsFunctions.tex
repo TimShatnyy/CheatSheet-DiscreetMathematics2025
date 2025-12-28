@@ -1,0 +1,64 @@
+\subsection{Polynomials as Functions}
+\tsDef{5.33 (Root of a Polynomial)}{
+    Let $a(x)\in R[x]$. An element $\alpha\in R$ such that $a(\alpha)=0$ is called a root of $a(x)$.
+}
+\newline
+\tsLem{5.29 (Factor Theorem)}{
+    For a field $F$ and $\alpha\in F$, $\alpha$ is a root of $a(x)$ if and only if $(x-\alpha)\mid a(x)$. In particular, an irreducible polynomial of degree at least $2$ has no roots.
+}
+\newline
+\tsCor{5.30 (Irreducible polynomials of degrees 2 and 3)}{
+    A polynomial $a(x)$ of degree $2$ or $3$ over a field $F$ is irreducible if and only if it has no roots in $F$.
+}
+\newline
+\tsThe{5.31 (Maximum number of roots of polynomials)}{
+    For a field $F$, a nonzero polynomial $a(x)\in F[x]$ of degree $d$ has at most $d$ roots. Indeed, if $a(x)$ had $e>d$ distinct roots $\alpha_1,\ldots,\alpha_e$, then $\prod_{i=1}^e(x-\alpha_i)$ would divide $a(x)$, forcing $\deg(a(x))\ge e>d$, a contradiction.
+}
+\newline
+\tsLem{5.36 (Multiplicative inverse in \(F[x]_{m(x)}\))}{
+    The congruence $a(x)b(x)\equiv1\pmod{m(x)}$ has a solution if and only if $\gcd(a(x),m(x))=1$, and the solution is unique. Moreover, $F[x]_{m(x)}^*=\{a(x)\in F[x]_{m(x)}\mid\gcd(a(x),m(x))=1\}$. Inverses in $F[x]_{m(x)}^*$ can be computed efficiently using a polynomial version of Euclid’s algorithm.
+}
+\newline
+\tsThe{5.37 (Existence of field based on irreduc. and prim.)}{
+    The ring $F[x]/(m(x))$ is a field if and only if $m(x)$ is irreducible. Likewise, $\mathbb{Z}_m$ is a field if and only if $m$ is prime. For example, $\mathbb{R}[x]/(x^2+1)$ is a field since $x^2+1$ has no real roots, and $\mathbb{R}[x]/(x^2+1)\cong\mathbb{C}$.
+}
+\newline
+\tsThe{5.38 (Existence of finite fields of order \(p^d\))}{
+For every prime $p$ and every $d\ge1$, there exists an irreducible polynomial of degree $d$ in $\mathbb{F}_p[x]$. In particular, there exists a finite field with $p^d$ elements.
+}
+\newline
+\tsThe{5.39 (Existence and uniqueness of finite fields)}{
+    There exists a finite field with $q$ elements if and only if $q$ is a power of a prime. Moreover, any two finite fields of the same size $q$ are isomorphic.
+}
+\newline
+\tsDef{5.35 ((n,k)-Encoding Function)}{
+    An $(n,k)$-encoding function $E$ for some alphabet $\mathcal{A}$ is an injective function mapping a list $(a_0,\ldots,a_{k-1})\in\mathcal{A}^k$ of information symbols to a list $(c_0,\ldots,c_{n-1})\in\mathcal{A}^n$ of encoded symbols, called a codeword. Formally, $E:\mathcal{A}^k\to\mathcal{A}^n$ and $C=\operatorname{Im}(E)$ is called the error-correcting code.
+}
+\newline
+\tsDef{5.36 ((n,k)-Error-Correcting Code)}{
+    An $(n,k)$-error-correcting code over the alphabet $\mathcal{A}$ with $|\mathcal{A}|=q$ is a subset $C\subseteq\mathcal{A}^n$ of cardinality $q^k$.
+}
+\newline
+\tsDef{5.37 (Hamming Distance)}{
+    The Hamming distance between two strings is the number of positions at which the two strings differ.
+}
+\newline
+\tsDef{5.38 (Minimum Distance)}{
+    The minimum distance of code $C$, ($d_{\min}(C)$), is the min. of the Hamming distance between any two distinct codewords.
+}
+\newline
+\tsDef{5.39 (Decoding Function)}{
+    A decoding function $D$ for an $(n,k)$-encoding function is a function $D:\mathcal{A}^n\to\mathcal{A}^k$.
+}
+\newline
+\tsDef{5.40 (Error-Correcting Decoder)}{
+    A decoding function $D$ is $t$-error-correcting for an encoding function $E$ if for any $(a_0,\ldots,a_{k-1})$ and any $(r_0,\ldots,r_{n-1})$ with Hamming distance at most $t$ from $E(a_0,\ldots,a_{k-1})$, we have $D(r_0,\ldots,r_{n-1})=(a_0,\ldots,a_{k-1})$. A code $C$ is $t$-error-correcting if such $E$ and $D$ exist.
+}
+\newline
+\tsThe{5.41 (Minimum distance for error correction)}{
+    A code $C$ with minimum distance $d$ is $t$-error-correcting if and only if $d\ge2t+1$. Equivalently, Hamming balls of radius $t$ around distinct codewords are disjoint.
+}
+\newline
+\tsThe{5.42 (Reed–Solomon Codes)}{
+    Let $\mathcal{A}=\mathrm{GF}(q)$ and let $\alpha_0,\ldots,\alpha_{n-1}$ be distinct elements of $\mathrm{GF}(q)$. Define the encoding function $E((a_0,\ldots,a_{k-1}))=(a(\alpha_0),\ldots,a(\alpha_{n-1}))$, where $a(x)=a_{k-1}x^{k-1}+\cdots+a_1x+a_0$. This code has minimum distance $n-k+1$.
+}

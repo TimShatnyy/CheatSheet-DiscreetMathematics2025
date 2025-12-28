@@ -1,0 +1,84 @@
+\subsection{Countable and Uncountable Sets}
+\tsDef{3.42 (Equinumerosity, Domination, and Countability)}{
+    \emph{Equinumerous} ($A \sim B$): there exists a bijection
+    \(
+    f : A \to B.
+    \)
+    Equivalently, $A \sim B$ \(\Leftrightarrow\) $|A| = |B|$.
+    \(\tsPoint\) \emph{B dominates A} ($A \preceq B$): if $A\sim C$ to some subset $C \subseteq B$.
+    Equivalently, there exists an injective function $f : A \to B$.
+    \(\tsPoint\) \emph{A is countable}: if $A \preceq \mathbb{N}$, and \emph{uncountable} otherwise.
+    Equivalently, $A$ is countable if there exists an injection $f : A \to \mathbb{N}$.
+}
+\newline
+\tsLem{3.15 (Properties of Equinumerosity and Domination)}{
+    The relation $\sim$ is an equivalence relation.
+    \(\tsPoint\) The relation $\preceq$ is transitive:
+    \(
+    A \preceq B \;\wedge\; B \preceq C \;\Rightarrow\; A \preceq C.
+    \)
+    \(\tsPoint\) If $A \subseteq B$, then $A \preceq B$.
+}
+\newline
+\tsThe{3.16 (Bernstein-Schröder theorem)}{
+    If $A \preceq B$ and $B \preceq A$, then $A \sim B$.
+}
+\newline
+\tsThe{3.17 (Conditions for Countability)}{
+    A set $A$ is countable if and only if $A$ is finite or $A \sim \mathbb{N}$.
+}
+\newline
+\tsThe{3.18 (\(\{0,1\}^*\) is countable)}{
+    The set $\{0,1\}^*$ of all finite binary sequences is countable.
+}
+\newline
+\tsThe{3.19 (Cartesian product of nat. numbers is countable)}{
+    The set $\mathbb{N} \times \mathbb{N}$ of ordered pairs of natural numbers is countable.
+}
+\newline
+\tsCor{3.20 (Countablility of Cartesian product)}{
+    If $A$ and $B$ are countable sets, then their Cartesian product $A \times B$ is countable:
+    \(A \preceq \mathbb{N} \land B \preceq \mathbb{N} \Longrightarrow A \times B \preceq \mathbb{N}\)
+}
+\newline
+\tsCor{3.21 (Countability of rational numbers \(\mathbb{Q}\))}{
+    The set of rational numbers $\mathbb{Q}$ is countable.
+    \\
+    \textbf{Idea:}
+    Every rational number can be written as $\frac{m}{n}$ with $m \in \mathbb{Z}$ and $n \in \mathbb{N}_{>0}$.
+    Thus $\mathbb{Q} \preceq \mathbb{Z} \times \mathbb{N}$, which is countable.
+}
+\newline
+\tsThe{3.22 (Countable sets and their combinations)}{
+    Let $A$ and $\{A_i\}_{i \in \mathbb{N}}$ be countable sets, then:
+    \(\tsPoint\) For any $n \in \mathbb{N}$, the Cartesian product $A^n$ is countable.
+    \(\tsPoint\) The union $\bigcup_{i \in \mathbb{N}} A_i$ is countable.
+    \(\tsPoint\) The set $A^*$ of all finite sequences with elements from $A$ is countable.
+}
+\tsDef{3.23 (Set of semi-infinite binary sequences)}{
+    Let $\{0,1\}^{\infty}$ denote the set of infinite binary sequences, equivalently the set of functions
+    \(
+    f : \mathbb{N} \to \{0,1\}.
+    \)
+}
+\newline
+\tsThe{3.23 (Uncountability of \(\{0,1\}^{\infty}\))}{
+    The set $\{0,1\}^{\infty}$ is uncountable.
+    \\
+    \textbf{Idea:} This follows from \textit{Cantor’s diagonal argument}.
+}
+\newline
+\tsDef{3.44 (Computable function)}{
+    A function
+    \(
+    f : \mathbb{N} \to \{0,1\}
+    \)
+    is called \emph{computable} if there exists a program such that, for every $n \in \mathbb{N}$, the program outputs $f(n)$ when given input $n$.
+}
+\newline
+\tsCor{3.24 (Existence of uncomputable functions)}{
+    There exist uncomputable functions $f : \mathbb{N} \to \{0,1\}$.
+    \\
+    \textbf{Remark.}
+    The Halting Problem gives an explicit example of an uncomputable function.
+}

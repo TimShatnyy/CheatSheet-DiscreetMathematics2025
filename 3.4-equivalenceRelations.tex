@@ -1,0 +1,53 @@
+\subsection{Equivalence Relation}
+\tsDef{3.19 (Equivalence Relation)}{
+    An equivalence relation on a set $A$ is a relation that is
+    \emph{reflexive}, \emph{symmetric}, and \emph{transitive}.
+}
+\newline
+\tsDef{3.20 (Equivalence Class)}{
+    Let $\theta$ be an equivalence relation on a set $A$, and let $a \in A$.
+    The \emph{equivalence class} of $a$ is
+    \(
+    [a]_{\theta} := \{\, b \in A \mid b \,\theta\, a \,\}.
+    \)
+    \\
+    \textbf{Example:} (congruence modulo $3$ on $\mathbb{Z}$):
+    \(
+    [0] = \{\dots,-6,-3,0,3,6,\dots\},
+    \)
+    \(
+    [1] = \{\dots,-5,-2,1,4,7,\dots\},
+    \)
+    \(
+    [2] = \{\dots,-4,-1,2,5,8,\dots\}.
+    \)
+}
+\newline
+\tsLem{3.10 (Intersection of equivalence relaltions)}{
+    The intersection of two equivalence relations on the same set is an equivalence relation.
+}
+\newline
+\tsDef{3.21 (Partition)}{
+    A \emph{partition} of a set $A$ is a family $\{S_i \mid i \in I\}$ of subsets of $A$
+    such that
+    \(
+    S_i \cap S_j = \varnothing \ (i \neq j),
+    \
+    \bigcup_{i \in I} S_i = A.
+    \)
+}
+\newline
+\tsDef{3.22 (Quotient Set)}{
+    Let $\theta$ be an equivalence relation on a set $A$.
+    The set of equivalence classes is denoted by
+    \(
+    A / \theta := \{ [a]_{\theta} \mid a \in A \},
+    \)
+    and is called the \emph{quotient set} of $A$ modulo $\theta$.
+}
+\newline
+\tsThe{3.11 (Set of equiv. classes forms a partition of a set)}{
+    Let $\theta$ be an equivalence relation on a set $A$.
+    Then the set $A/\theta$ of equivalence classes forms a partition of $A$.
+}
+\newline

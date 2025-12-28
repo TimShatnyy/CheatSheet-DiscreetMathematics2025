@@ -1,0 +1,49 @@
+\subsection{Polynomials over a Field}
+\tsDef{5.28 (Irreducible Polynomial)}{
+    A polynomial $a(x)\in F[x]$ with degree at least $1$ is called irreducible over a field $F$ if it is divisible only by constant polynomials and constant multiples of $a(x)$.
+}
+\newline
+\tsDef{5.29 (Greatest Common Divisor)}{
+    The monic polynomial $g(x)$ of largest degree such that $g(x)\mid a(x)$ and $g(x)\mid b(x)$ is the greatest common divisor of $a(x)$ and $b(x)$, denoted $\gcd(a(x),b(x))$.
+}
+\newline
+\tsThe{5.25 (Division Algorithm)}{
+    Let $F$ be a field. For any $a(x)$ and $b(x)\neq0$ in $F[x]$, there exist unique polynomials $q(x)$ and $r(x)$ such that $a(x)=q(x)b(x)+r(x)$ and $\deg(r(x))<\deg(b(x))$.
+}
+\newline
+\tsLem{5.22 (Polynomial Interpolation)}{
+    A polynomial $a(x)\in F[x]$ of degree at most $d$ is uniquely determined by any $d+1$ values $a(\alpha_i)=\beta_i$ for distinct $\alpha_1,\dots,\alpha_{d+1}\in F$. One representation is
+    \(
+    a(x)=\sum_{i=1}^{d+1}\beta_i \ell_i(x)
+    \),
+    where \(\ell_i(x)=\prod_{j\ne i}\frac{x-\alpha_j}{\alpha_i-\alpha_j}\).
+}
+\newline
+\tsDef{5.23 (Polynomial Congruence)}{
+    Congruence modulo $m(x)$ for polynomials is defined by $a(x)\equiv b(x)\pmod{m(x)}$ if and only if $m(x)\mid(a(x)-b(x))$.
+}
+\newline
+\tsLem{5.23 (Congruence modulo is ER on $F[x]$)}{
+    Congruence modulo $m(x)$ is an equivalence relation on $F[x]$, and each equivalence class has a unique representative of degree less than $\deg(m(x))$.
+}
+\newline
+\tsDef{5.24 (Quotient Ring)}{
+    Let $m(x)$ be a polynomial of degree $d$ over $F$. Then $F[x]/(m(x))=\{a(x)\in F[x]\mid\deg(a(x))<d\}$.
+}
+\newline
+\tsLem{5.24 (Cardinality of \(F[x]/(m(x))\))}{
+If $F$ is a finite field with $q$ elements and $m(x)$ is a polynomial of degree $d$ over $F$, then $|F[x]/(m(x))|=q^d$.
+}
+\newline
+\tsThe{5.25 (Ring structure via polynomial reduction)}{
+    $F[x]/(m(x))$ is a ring with respect to addition and multiplication modulo $m(x)$.
+}
+\newline
+\tsThe{5.27 (Unique factorization in euclidean domain)}{
+    In a Euclidean domain every element can be factored uniquely (up to taking
+    associates) into irreducible elements.
+}
+\newline
+\tsLem{5.28 (Polynomial Evaluation)}{
+    Polynomial evaluation is compatible with ring operations. If $c(x)=a(x)+b(x)$, then $c(\alpha)=a(\alpha)+b(\alpha)$ for all $\alpha$. If $c(x)=a(x)b(x)$, then $c(\alpha)=a(\alpha)b(\alpha)$ for all $\alpha$.
+}

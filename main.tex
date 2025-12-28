@@ -23,6 +23,7 @@
 \usepackage{soul}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{caption}
 
 
 \titleformat{\section}
@@ -152,14 +153,27 @@
 \begin{multicols}{3}
     \setcounter{section}{2}
     \section{Set, Relations, and Functions}
-    \input{3-setsFunctions}
+    \input{3.1-sets}
+    \input{3.2-relations}
+    \input{3.3-propertiesOfRelations}
+    \input{3.4-equivalenceRelations}
+    \input{3.5-partialOrderRelations}
+    \input{3.6-functions}
+    \input{3.7-countableUncountableSets}
     \section{Number Theory}
     \input{4-numberTheory}
-    \setcounter{section}{5}
+    \section{Algebra}
+    \input{5.1-algebrasMonoidsAndGroups}
+    \input{5.2-structureOfGroups}
+    \input{5.3-ringsAndFields}
+    \input{5.4-polynomialsOverFields}
+    \input{5.5-polynomialsAsFunctions}
     \section{Logic}
-    \input{6.2-proofSystems}
+    \input{6.1-proofSystems}
+    \input{6.2-logicalCalculi}
+    \input{6.3-propositionalLogic}
     \newpage
-    \section{Algorithms}
+    \section*{Algorithms}
     \input{algorithms}
     \newpage
     \section*{Notes from Correction}

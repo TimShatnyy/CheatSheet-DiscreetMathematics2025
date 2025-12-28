@@ -1,0 +1,74 @@
+\subsection{Functions}
+\tsDef{3.33 (Function)}{
+    A function $f:A\to B$ from domain $A$ to codomain $B$ is a relation from
+    $A$ to $B$ such that:
+    \(\tsPoint\) For every $a\in A$ there exists $b\in B$ with $a\,f\,b$
+    (totality).
+    \(\tsPoint\) For all $a\in A$ and $b,b'\in B$,
+    \(
+    a\,f\,b \wedge a\,f\,b' \;\Longrightarrow\; b=b'
+    \)
+    (well-definedness).
+    We write $f(a)=b$.
+}
+\newline
+\tsDef{3.34 (Set of all functions)}{
+    The set of all functions from $A$ to $B$ is denoted $B^A$.
+}
+\newline
+\tsDef{3.35 (Partial Function)}{
+    A \emph{partial function} satisfies only condition (2) of Definition~3.33.
+}
+\newline
+\tsDef{3.36 (Image of a Set)}{
+    Let $f:A\to B$ be a function and $S\subseteq A$.
+    The image of $S$ under $f$ is
+    \(
+    f(S):=\{f(a)\mid a\in S\}.
+    \)
+}
+\newline
+\tsDef{3.37 (Image of a Function)}{
+    The image of $f$ is
+    \(
+    \operatorname{Im}(f):=f(A).
+    \)
+}
+\newline
+\tsDef{3.38 (Preimage)}{
+    For $T\subseteq B$, the preimage of $T$ under $f$ is
+    \(
+    f^{-1}(T):=\{a\in A\mid f(a)\in T\}.
+    \)
+    \\
+    \textbf{Example:}
+    If $f(x)=x^2$, then
+    \(
+    f^{-1}(\{4,9\})=\{-3,-2,2,3\}.
+    \)
+}
+\newline
+\tsDef{3.39 (Injective, Surjective, Bijective)}{
+    A function $f:A\to B$ is:
+    \(\tsPoint\) \emph{Injective}: if $f(a)=f(a')\Rightarrow a=a'$.
+    \(\tsPoint\) \emph{Surjective}: if $f(A)=B$.
+    \(\tsPoint\) \emph{Bijective}: if it is both injective and surjective.
+    \\
+    A bijection has an inverse function $f^{-1}$.
+}
+\newline
+\tsDef{3.41 (Composition of Functions)}{
+    Let $f:A\to B$ and $g:B\to C$ be functions.
+    \\
+    Composition $g\circ f:A\to C$ is defined by
+    \(
+    (g\circ f)(a)=g(f(a)).
+    \)
+}
+\newline
+\tsLem{3.14 (Associativity of function composition)}{
+    Function composition is associative:
+    \(
+    (h\circ g)\circ f = h\circ(g\circ f).
+    \)
+}

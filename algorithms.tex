@@ -1,5 +1,163 @@
-\subsection*{Euclidean Algorithm}
+\subsection*{{Extended Euclidean Algorithm}}
+Each remainder in the Euclidean algorithm is a linear combination of the
+initial integers. The last nonzero remainder is the gcd.
+\[
+    \begin{array}{rcl}
+        252 & = & 1\cdot198 + 54 \\
+        198 & = & 3\cdot54  + 36 \\
+        54  & = & 1\cdot36  + 18 \\
+        36  & = & 2\cdot18
+    \end{array}
+    \qquad
+    \Rightarrow
+    \qquad
+    18 = 4\cdot252 - 5\cdot198.
+\]
+\hrule
 \subsection*{Computing big exponents}
+Compute $a^N \pmod{p}.$
+\(\tsPoint\) Find a small $k \text{ such that } a^k \equiv r \pmod{p}$.
+\(\tsPoint\) Write $N = kq \;(+\; r_0).$
+\[
+    a^N = (a^k)^q \cdot a^{r_0}
+    \equiv r^q \cdot a^{r_0} \pmod{p}.
+\]
+Evaluate and conclude. Example:
+\\
+\(
+2^6 \equiv -1 \pmod{13}, \quad 4536 = 6\cdot756
+\Rightarrow 2^{4536} \equiv (-1)^{756} \equiv 1 \pmod{13}.
+\)
+\newline
+\hrule
 \subsection*{Chinese Remainder Theorem}
-\subsection*{Finding secret key}
-\subsection*{Finding secret key}
+Solve the system
+\[
+    x \equiv_3 2, \quad x \equiv_5 3, x \equiv_7 2
+\]
+
+\textbf{Step 1: Combine moduli.}
+\[
+    N = 3 \cdot 5 \cdot 7 = 105,
+    \qquad
+    N_1 = \frac{N}{3} = 35,\;
+    N_2 = \frac{N}{5} = 21,\;
+    N_3 = \frac{N}{7} = 15.
+\]
+
+\textbf{Step 2: Compute inverses.}
+\[
+    35^{-1} \equiv_3 2,\qquad
+    21^{-1} \equiv_5 1,\qquad
+    15^{-1} \equiv_7 1.
+\]
+
+\textbf{Step 3: Assemble the solution.}
+\[
+    x \equiv \sum a_i N_i N_i^{-1} \pmod{N},
+\]
+\[
+    x \equiv
+    2 \cdot 35 \cdot 2
+    + 3 \cdot 21 \cdot 1
+    + 2 \cdot 15 \cdot 1
+    \pmod{105}.
+\]
+\[
+    x \equiv 233 \equiv \boxed{23 \pmod{105}}.
+\]
+\hrule
+\subsection*{Polynomial Interpolation}
+\[
+    a(x) = \sum_{i=0}^{n} y_i \, L_i(x),
+\]
+where
+\(
+L_i(x) = \prod_{\substack{j=0 \\ j \neq i}}^{n}
+\frac{x - x_j}{x_i - x_j}.
+\)
+\\ \\
+Given the data points:
+\(
+(0,1),\ (1,3),\ (2,2),
+\)
+we obtain:
+\[
+    L_0(x) = \frac{(x-1)(x-2)}{(0-1)(0-2)}, \qquad
+    L_1(x) = \frac{(x-0)(x-2)}{(1-0)(1-2)}, \qquad
+    L_2(x) = \frac{(x-0)(x-1)}{(2-0)(2-1)}.
+\]
+Therefore,
+\[
+    a(x) = 1 \cdot L_0(x) + 3 \cdot L_1(x) + 2 \cdot L_2(x).
+\]
+\subsection*{Diffie-Hellman Key-Agreement}
+\begin{itemize}[noitemsep, topsep=-2px]
+    \item Alice and Bob select a random $x_A, x_B \in \{0,\dots,p-2\}$.
+    \item Alice computes $y_A = R_p(g^{x_A})$, Bob computes $y_B = R_p(g^{x_B})$.
+    \item They exchange $y_A$ and $y_B$.
+    \item Alice computes $k_{AB} = R_p(y_B^{x_A})$, Bob computes
+          $k_{BA} = R_p(y_A^{x_B})$.
+\end{itemize}
+Then
+\[
+    k_{AB}
+    \equiv y_B^{x_A}
+    \equiv (g^{x_B})^{x_A}
+    \equiv g^{x_A x_B}
+    \equiv k_{BA}
+    \pmod{p}.
+\]
+\hrule
+\subsection*{RSA Public-Key Encryption}
+Define a group $G$ and choose two large primes $p,q$.
+\begin{itemize}[noitemsep, topsep=-1px]
+    \item $n = pq$
+    \item $|G| = |\mathbb{Z}_n^*| = |\mathbb{Z}_{pq}^*|
+              = \varphi(n) = (p-1)(q-1)$
+\end{itemize}
+Let $e \in \mathbb{Z}$ be relatively prime to $|G|$ and let
+\(
+d \equiv e^{-1} \pmod{|G|}.
+\)
+\\
+Then the map
+\(
+x \mapsto x^e
+\)
+is a bijection on $G$, and for all ciphertexts $c = x^e$ we have
+\(
+x = c^d = x^{ed}.
+\)
+\\
+\textbf{Proof.}
+Since $ed = k|G| + 1$ for some $k \in \mathbb{Z}$,
+\[
+    x^{ed} = x^{k|G|+1} = (x^{|G|})^k x = x.
+\]
+
+\subsubsection*{Application}
+\begin{itemize}[noitemsep, topsep=-1px]
+    \item Select $e$ and compute $d \equiv e^{-1} \pmod{|G|}$
+    \item Publish the public key $(n,e)$
+    \item The other party computes $c = R_n(m^e)$ and sends $c$
+    \item You recover the message by computing $m = R_n(c^d)$
+\end{itemize}
+\textbf{RSA example (small primes).}
+\\
+Choose $p=5$, $q=11$, so $n=pq=55$ and $\varphi(n)=(p-1)(q-1)=40$.
+\\
+Choose $e=3$ with $\gcd(3,40)=1$, and compute
+$d\equiv e^{-1}\pmod{40}\equiv27$.
+\\
+Public key $(n,e)=(55,3)$, private key $d=27$.
+\\
+For message $m=7$, encrypt
+$c\equiv m^e\equiv7^3\equiv13\pmod{55}$,
+\\
+and decrypt
+$m\equiv c^d\equiv13^{27}\equiv7\pmod{55}$.
+
+
+% \hrule
+% \subsection*{Error-Correcting Codes}

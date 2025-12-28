@@ -1,0 +1,43 @@
+\subsection{Logical Calculi}
+\tsDef{6.17 (Derivation Rule)}{
+    Let $R$ be a rule. If $G$ can be obtained from $\{F_1,\dots,F_k\}$ using rule $R$, we write
+    \(
+    \{F_1,\dots,F_k\} \vdash_R G.
+    \)
+    Derivation is a purely syntactic concept.
+}
+\newline
+\tsDef{6.18 (Application of derivation rules)}{
+    The application of a derivation rule $R$ to a set $M$ of formulas means:
+    \begin{enumerate}[noitemsep, topsep=-1pt]
+        \item Select a subset $N \subseteq M$ such that $N \vdash_R G$ for some formula $G$.
+        \item Add $G$ to $M$, i.e.\ replace $M$ by $M \cup \{G\}$.
+    \end{enumerate}
+}
+\tsDef{6.19 (Calculus)}{
+    A calculus $K$ is a finite set of derivation rules:
+    \(
+    K=\{R_1,\dots,R_n\}.
+    \)
+}
+\newline
+\tsDef{6.20 (Derivation)}{
+    A derivation of $G$ from $M$ in calculus $K$ is a finite application of rules in $K$ leading to $G$.
+    We write
+    \(
+    M \vdash_K G.
+    \)
+}
+\newline
+\tsDef{6.22 (Calculus soundness and completeness)}{
+    A calculus $K$ is \emph{sound} if for all sets $M$ of formulas and all formulas $F$,
+    \\
+    \(
+    M \vdash_K F \;\Rightarrow\; M \models F.
+    \)
+    \\
+    \(\bullet\) It is \emph{complete} if for all $M$ and $F$,
+    \(
+    M \models F \;\Rightarrow\; M \vdash_K F.
+    \)
+}

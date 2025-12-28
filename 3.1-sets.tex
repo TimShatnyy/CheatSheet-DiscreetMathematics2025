@@ -1,0 +1,157 @@
+\subsection{Sets}
+\tsDef{3.2 (Equal sets)}{
+    For sets $A$ and $B$,
+    \(
+    A = B \;\Longleftrightarrow\; \forall x \,(x \in A \iff x \in B).
+    \)
+}
+\newline
+\tsLem{3.1 (Equality of set elemetns and ord. pairs)}{
+    For any sets $A$ and $B$,
+    \(
+    \{A\} = \{B\} \;\Longrightarrow\; A = B.
+    \)
+    \\
+    \textbf{Ordered pairs:}
+    \(
+    (a,b) = (c,d) \;\Longleftrightarrow\; a = c \;\wedge\; b = d.
+    \)
+    \\
+    \textbf{Odered pairs via sets:}
+    \(
+    (a,b) := \bigl\{ \{a\}, \{a,b\} \bigr\}.
+    \)
+}
+\newline
+\tsDef{3.3 (Subset)}{
+    \(
+    A \subseteq B \;\Longleftrightarrow\; \forall x \,(x \in A \Rightarrow x \in B).
+    \)
+}
+\newline
+\tsLem{3.2 (Sets equality and subsets)}{
+    \(
+    A = B \;\Longleftrightarrow\; (A \subseteq B) \wedge (B \subseteq A).
+    \)
+    Equivalently: \\
+    \(
+    \forall x \,\bigl((x \in A \Rightarrow x \in B) \wedge (x \in B \Rightarrow x \in A)\bigr)
+    \;\Leftrightarrow\;
+    \forall x \,(x \in A \iff x \in B).
+    \)
+}
+\newline
+\tsLem{3.3 (Transitivity of subsets)}{
+    For all sets $A,B,C$,
+    \(
+    A \subseteq B \;\wedge\; B \subseteq C \;\Longrightarrow\; A \subseteq C.
+    \)
+}
+\newline
+\tsDef{3.4 (Union and Intersection)}{
+    \(
+    A \cup B := \{x \mid x \in A \vee x \in B\},
+    \)
+    \(
+    A \cap B := \{x \mid x \in A \wedge x \in B\}.
+    \)
+    \\
+    \textbf{Families of Sets:}
+    Let $\mathcal{A}$ be a set of sets:\\
+    \(
+    \bigcap \mathcal{A} := \{x \mid x \in A \text{ for all } A \in \mathcal{A}\},
+    \)
+    \(
+    \bigcup \mathcal{A} := \{x \mid x \in A \text{ for some } A \in \mathcal{A}\}.
+    \)
+    % \\
+    % \textbf{Example:}
+    % \\
+    % \(
+    % \mathcal{A} = \bigl\{\{a,b,c\}, \{a,c\}, \{a,b,c,f\}, \{a,c,d\}\bigr\},
+    % \)
+    % \\
+    % \(
+    % \bigcup \mathcal{A} = \{a,b,c,d,e,f\},
+    % \qquad
+    % \bigcap \mathcal{A} = \{a,c\}.
+    % \)
+    \\
+    If $I$ is an index set and $\mathcal{A} = \{A_i \mid i \in I\}$, then
+    \(
+    \bigcap_{i \in I} A_i,
+    \
+    \bigcup_{i \in I} A_i.
+    \)
+}
+\newline
+\tsDef{3.5 (Set Difference)}{
+    The difference of sets $B$ and $A$ is
+    \(
+    B \setminus A := \{x \in B \mid x \notin A\}.
+    \)
+}
+\newline
+\tsDef{3.6 (Empty Set)}{
+    A set is called \emph{empty} if it contains no elements:
+    \(
+    \forall x \,(x \notin A).
+    \)
+}
+\newline
+\tsLem{3.5 (Uniqueness of an empty set)}{
+    There is exactly \textbf{one} empty set, denoted $\varnothing$ or $\{\}$.
+}
+\newline
+\tsLem{3.6 (Empty set is a subset of every set)}{
+    The empty set is a subset of every set:
+    \(
+    \forall A \;(\varnothing \subseteq A).
+    \)
+    \\
+    \textbf{Construction of natural numbers:}
+    \(
+    S(n) := n \cup \{n\} \ \text{(rec. sucsessor)}.
+    \)
+}
+\newline
+\tsDef{3.7 (Power Set)}{
+    The power set of a set $A$, denoted $\mathcal{P}(A)$, is the set of all subsets of $A$:
+    \(
+    \mathcal{P}(A) := \{S \mid S \subseteq A\}.
+    \)
+    If $|A| = k$, then
+    \(
+    |\mathcal{P}(A)| = 2^k.
+    \)
+    In particular, for a set with $k$ elements, each element may be
+    \emph{included} or \emph{excluded}, giving
+    \(
+    2 \times 2 \times \cdots \times 2 = 2^k
+    \)
+    possible subsets. Think of bit-mask of set elements.
+    % \\
+    % \textbf{Example (bit-mask intuition for $\{a,b\}$):}
+    % \(
+    % {\scriptsize
+    %         \begin{array}{ccl}
+    %             00 & \longleftrightarrow & \varnothing \\
+    %             01 & \longleftrightarrow & \{b\}       \\
+    %             10 & \longleftrightarrow & \{a\}       \\
+    %             11 & \longleftrightarrow & \{a,b\}
+    %         \end{array}
+    %     }
+    % \)
+    % \subsection*{Counting Principle}
+    % If a process has:
+    % \begin{itemize}[noitemsep, topsep=0pt]
+    %     \item $a$ choices for step 1,
+    %     \item $b$ choices for step 2,
+    %     \item $c$ choices for step 3,
+    % \end{itemize}
+    % then the total number of outcomes is
+    % \(
+    % a \times b \times c.
+    % \)
+}
+% \newline

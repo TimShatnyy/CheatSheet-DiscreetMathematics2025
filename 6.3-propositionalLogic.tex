@@ -1,0 +1,235 @@
+\subsection{Propositional logic}
+\tsDef{6.23 (Connectives/Syntax)}{
+    If $F$ and $G$ are formulas, then $\neg F$, $(F \land G)$, and $(F \lor G)$ are formulas.
+}
+\tsDef{6.24 (Truth Conditions/Semantics)}{
+    For any interpretation $\mathcal{A}$:
+    \(
+    \mathcal{A}(F \land G)=1 \Leftrightarrow \mathcal{A}(F)=1 \text{ and } \mathcal{A}(G)=1,
+    \)
+    \(
+    \mathcal{A}(F \lor G)=1 \Leftrightarrow \mathcal{A}(F)=1 \text{ or } \mathcal{A}(G)=1,
+    \)
+    \(
+    \mathcal{A}(\neg F)=1 \Leftrightarrow \mathcal{A}(F)=0.
+    \)
+}
+\newline
+\tsDef{6.25 (Literal)}{
+    A literal is an atomic formula or the negation of an atomic formula.
+}
+\newline
+\tsDef{6.26 / 6.27 (CNF / DNF)}{
+    \textbf{CNF:} AND of ORs: \((L_1 \lor L_2) \land (L_3 \lor L_4)\)
+    \(\tsPoint\) \textbf{DeNF:} OR of ANDs: \((L_1 \land L_2) \lor (L_3 \land L_4)\)
+}
+\newline
+\tsThe{6.4 (Formula equivalence to CNF/DNF)}{
+    Every formula is equivalent to a formula in CNF and in DNF.
+}
+\newline
+\tsDef{6.28 (Clause)}{
+    A \emph{clause} is a set of literals.
+}
+\newline
+\tsDef{6.30 (Resolvent)}{
+    Let $K_1$ and $K_2$ be clauses. A clause $K$ is a \emph{resolvent} of $K_1$ and $K_2$ if
+    \(
+    K = (K_1 \setminus \{L\}) \cup (K_2 \setminus \{\neg L\})
+    \)
+    for some literal $L$.
+}
+\newline
+\tsLem{6.5 (Resolution calculus soundness)}{
+    Resolution calculus is sound: if $\mathcal{K} \vdash_{\text{res}} K$, then $\mathcal{K} \models K$.
+}
+\newline
+\tsThe{6.6 (Unsatisfiable set of formulas)}{
+    A set of formulas $M$ is unsatisfiable \(\iff\)
+    \(
+    \mathcal{K}(M) \vdash_{\text{res}} \emptyset.
+    \)
+}
+\newline
+\tsDef{6.32 (Free/Bound variables)}{
+    Every variable in a formula is either \emph{bound} or \emph{free}.
+    A variable is bound if it occurs within the scope of a quantifier ($\forall x$ or $\exists x$);
+    otherwise it is free. A formula is \emph{closed} if it contains no free variables.
+}
+\newline
+\tsDef{6.33 (Substitution)}{
+    $F[x/t]$ denotes the formula obtained by substituting every free occurrence of $x$ in $F$ by the term $t$.
+}
+\newline
+\tsDef{6.3.4 (Interpretation)}{
+    An interpretation $\mathcal{A}$ is a tuple
+    \(
+    \mathcal{A} = (U, \varphi, \psi, \xi)
+    \)
+    where:
+    \begin{itemize}[noitemsep, topsep=-1px]
+        \item $U$ is a nonempty universe,
+        \item $\varphi$ assigns functions to function symbols,
+        \item $\psi$ assigns relations to predicate symbols,
+        \item $\xi$ assigns elements of $U$ to variables.
+    \end{itemize}
+}
+\tsDef{6.3.5 (Suitable Interpretation)}{
+    An interpretation $\mathcal{A}$ is \emph{suitable} for a formula $F$ if it assigns meanings to all
+    function symbols, predicate symbols, and free variables occurring in $F$.
+}
+\newline
+\tsDef{6.3.6 (Semantics)}{
+    Let $\mathcal{A}$ be an interpretation.
+    \\
+    \(
+    \mathcal{A}(\forall x\, G) =
+    \begin{cases}
+        1 & \text{if } \mathcal{A}[x \mapsto u](G) = 1 \text{ for all } u \in U, \\
+        0 & \text{otherwise}.
+    \end{cases}
+    \)
+    \\
+    Equivalently for \(\exists\) for some $u \in U$.
+    % \(
+    % \mathcal{A}(\exists x\, G) =
+    % \begin{cases}
+    %     1 & \text{if } \mathcal{A}[x \mapsto u](G) = 1 \text{ for some } u \in U, \\
+    %     0 & \text{otherwise}.
+    % \end{cases}
+    % \)
+}
+\newline
+\tsLem{6.9 (Name of a variable - no semantic meaning)}{
+    Name of a bound variable carries no semantic meaning. For a formula $G$ in which y does not occur, we have:
+    \(\forall x G \equiv \forall y G[x/y]\), same for \(\exists\).
+}
+\newline
+\tsDef{6.37 (Rectified Form)}{
+    A formula is \emph{rectified} if no variable occurs both free and bound,
+    and all bound variables are distinct.
+}
+\newline
+\tsDef{6.38 (Prenex Form)}{
+    A formula is in \emph{prenex form} if it has the shape
+    \(
+    Q_1 x_1 \, Q_2 x_2 \cdots Q_n x_n \, G
+    \)
+    where each $Q_i \in \{\forall, \exists\}$ and $G$ is quantifier-free.
+}
+\newline
+\tsThe{6.10 (Formula equivalence to prenex form)}{
+    Every formula is logically equivalent to a formula in prenex form.
+}
+\newline
+\tsLem{6.11 (Quantifier elimination)}{
+    For any formula $F$ and any term $t$,
+    \(
+    \forall x\, F \equiv F[x/t].
+    \)
+}
+\newline
+\tsThe{6.12 (Russel's paradox)}{
+    \(\lnot \exists x \forall y (P(y,x) \leftrightarrow \lnot P(y,y))\) specializes to \(\lnot \exists R \ \forall S (S \in R \leftrightarrow S \not \in S)\).
+}
+\newline
+\tsCor{6.13 (No set that do not contain sets...)}{
+    There exists no set that contains all sets that do not contain themselves:
+    \(
+    \{ S \mid S \notin S \} \text{ is not a set.}
+    \)
+}
+% \newline
+% \tsCor{6.13}{
+%     The set $\{0,1\}^{\infty}$ of infinite binary sequences is uncountable.
+% }
+% \newline
+% \tsThe{Halting Problem}{
+%     The function
+%     \(
+%     f : \mathbb{N} \to \{0,1\}
+%     \)
+%     that assigns to each program $y$ whether it halts on input $y$ is uncomputable.
+% }
+% \newline
+% \tsCor{}{
+%     There exist uncomputable functions $\mathbb{N} \to \{0,1\}$.
+%     \\
+%     \textbf{Example:} \\
+%     Define
+%     \(
+%     h(n) =
+%     \begin{cases}
+%         1 & \text{if } n \text{ is divisible by } 3, \\
+%         0 & \text{otherwise}.
+%     \end{cases}
+%     \)
+%     Then $h$ is computable.
+% }
+\begin{tcolorbox}[
+        colframe=blue!70!black,
+        colback=white,
+        boxrule=1pt,
+        left=-3mm, right=0mm, top=1mm, bottom=1mm,
+        arc=3mm,
+    ]
+    \small
+    \ \ \ \ \ \(\bullet\) \textbf{Equivalences of propositional logic:} \hfill (Lemma 6.1)
+    \begin{enumerate}[noitemsep, topsep=0px]
+        \item $A \land A \equiv A$ and $A \lor A \equiv A$ \hfill (\textbf{Idempotence})
+
+        \item $A \land B \equiv B \land A$ and $A \lor B \equiv B \lor A$ \hfill (\textbf{Commutativity})
+
+        \item $(A \land B) \land C \equiv A \land (B \land C)$ and
+              $(A \lor B) \lor C \equiv A \lor (B \lor C)$ \hfill (\textbf{Associativity})
+
+        \item $A \land (A \lor B) \equiv A$ and
+              $A \lor (A \land B) \equiv A$ \hfill (\textbf{Absorption})
+
+        \item $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$
+              \hfill (\textbf{First distributive law})
+
+        \item $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$
+              \hfill (\textbf{Second distributive law})
+
+        \item $\neg\neg A \equiv A$ \hfill (\textbf{Double negation})
+
+        \item $\neg(A \land B) \equiv \neg A \lor \neg B$ and
+              $\neg(A \lor B) \equiv \neg A \land \neg B$
+              \hfill (\textbf{De Morgan's rule})
+
+        \item $A \lor \top \equiv \top$ and $A \land \top \equiv A$
+              \hfill (\textbf{Tautology rules})
+
+        \item $A \lor \bot \equiv A$ and $A \land \bot \equiv \bot$
+              \hfill (\textbf{Unsatisfiability rules})
+
+        \item $A \lor \neg A \equiv \top$ and $A \land \neg A \equiv \bot$
+    \end{enumerate}
+\end{tcolorbox}
+% \tsLem{2.1 (Equivalences of propositional logic)}{
+%     Equivalences of propositional logic:
+%     \begin{enumerate}[noitemsep, topsep=0px]
+%         \item $A \land A \equiv A$ and $A \lor A \equiv A$ \hfill (Idempotence)
+
+%         \item $A \land B \equiv B \land A$ and $A \lor B \equiv B \lor A$ \hfill (Commutativity)
+
+%         \item $(A \land B) \land C \equiv A \land (B \land C)$ and
+%               $(A \lor B) \lor C \equiv A \lor (B \lor C)$ \hfill (Associativity)
+
+%         \item $A \land (A \lor B) \equiv A$ and
+%               $A \lor (A \land B) \equiv A$ \hfill (Absorption)
+
+%         \item $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$
+%               \hfill (First distributive law)
+
+%         \item $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$
+%               \hfill (Second distributive law)
+
+%         \item $\neg\neg A \equiv A$ \hfill (Double negation)
+
+%         \item $\neg(A \land B) \equiv \neg A \lor \neg B$ and
+%               $\neg(A \lor B) \equiv \neg A \land \neg B$
+%               \hfill (De Morgan's rule)
+%     \end{enumerate}
+% }

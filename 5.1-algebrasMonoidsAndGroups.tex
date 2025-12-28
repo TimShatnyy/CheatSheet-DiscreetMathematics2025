@@ -1,0 +1,117 @@
+\subsection{Algebras, Monoids, Groups}
+\tsDef{5.1 (Operations)}{
+    Let $S$ be a set. A function
+    \(
+    \omega : S^n \to S \quad (n \ge 0)
+    \)
+    is called an \emph{operation} on $S$.
+    \begin{itemize}[noitemsep, topsep=-1px]
+        \item Arity $1$: unary operations
+        \item Arity $2$: binary operations
+        \item Arity $0$: constants
+    \end{itemize}
+}
+\tsDef{5.2 (Algebra)}{
+    An \emph{algebra} is a pair $\langle S, \Omega \rangle$, where $S$ is a set (also known as the \emph{carrier} of the algebra) and
+    \(
+    \Omega = (\omega_1, \dots, \omega_n)
+    \)
+    is a list of operations on $S$.
+    \\
+    Example:
+    \(
+    \langle \mathcal{P}(A), \cup, \cap, \rightarrow, \overline{\phantom{A}} \rangle
+    \)
+    where $\cup, \cap, \rightarrow$ are binary operations, and complement $( \ \overline{\phantom{A}} \ )$ is a unary operation.
+}
+\newline
+\tsDef{5.3 (Neutral Element)}{
+    A \emph{left/right neutral (identity) element} of an algebra $\langle S, * \rangle$ is an element $e \in S$ such that
+    \(
+    e * a = a \quad \text{or} \quad a * e = a \quad \text{for all } a \in S.
+    \)
+    If
+    \(
+    e * a = a * e = a \quad \text{for all } a \in S,
+    \)
+    then $e$ is simply called the \emph{neutral element}.
+}
+\newline
+\tsLem{5.4 (Left-right neutral element equality)}{
+    If $\langle S, * \rangle$ has both a left and a right neutral element, then they are equal.
+    In particular, $\langle S, * \rangle$ has at most one neutral element.
+}
+\newline
+\tsDef{5.4 (Associativity)}{
+    A binary operation $*$ on a set $S$ is \emph{associative} if
+    \(
+    a * (b * c) = (a * b) * c \quad \text{for all } a,b,c \in S.
+    \)
+    \\
+    This justifies the use of expressions such as
+    \(
+    \sum_{i=1}^n a_i \quad \text{or} \quad \prod_{i=1}^n a_i,
+    \)
+    since the order of addition or multiplication does not matter.
+}
+\newline
+\tsDef{5.5 (Monoid)}{
+    A \emph{monoid} is an algebra $\langle M, *, e \rangle$ where
+    \begin{itemize}[noitemsep, topsep=-1px]
+        \item $*$ is associative,
+        \item $e$ is a neutral element.
+    \end{itemize}
+}
+\tsDef{5.6 (Inverse)}{
+    A left/right inverse of an element $a$ in an algebra $\langle S, *, e \rangle$ is an element $b \in S$ such that
+    \(
+    b * a = e \quad \text{or} \quad a * b = e.
+    \)
+    If
+    \(
+    b * a = a * b = e,
+    \)
+    then $b$ is called the \emph{inverse} of $a$.
+}
+\newline
+\tsLem{5.7 (Left-right inverse leads to one inverse)}{
+    In a monoid $\langle M, *, e \rangle$, if an element $a$ has both a left and a right inverse, then they are equal.
+    In particular, $a$ has at most one inverse.
+}
+\newline
+\tsDef{5.8 (Group)}{
+    A \emph{group} is an algebra $\langle G, *,\widehat{\ }, e \rangle$ satisfying:
+    \begin{itemize}[noitemsep, topsep=-1px]
+        \item (G1) $*$ is associative,
+        \item (G2) $e$ is a neutral element: $a * e = e * a = a$,
+        \item (G3) $\forall a \in G$ there is an inverse $\widehat{a}$ such that
+              \(
+              a * \widehat{a} = \widehat{a} * a = e.
+              \)
+    \end{itemize}
+}
+% \newline
+\tsLem{5.3 (Group properties)}{
+    For a group $\langle G; *, \widehat{\ }, e \rangle$, we have for all $a,b,c \in G$:
+    \begin{enumerate}[noitemsep, topsep=-1px]
+        \item[(i)] $\widehat{(\widehat{a})} = a$.
+        \item[(ii)] $\widehat{(a * b)} = \widehat{b} * \widehat{a}$.
+        \item[(iii)] \textbf{Left cancellation law:}
+              \(
+              a * b = a * c \;\Longrightarrow\; b = c.
+              \)
+        \item[(iv)] \textbf{Right cancellation law:}
+              \(
+              b * a = c * a \;\Longrightarrow\; b = c.
+              \)
+        \item[(v)] The equation $a * x = b$ has a unique solution $x$ for any $a$ and $b$.
+              So does the equation $x * a = b$.
+    \end{enumerate}
+}
+% \newline
+\tsDef{5.9 (Abelian/Commutative Group)}{
+    Group $\langle G, * \rangle$ is called \emph{abelian} (commut.) if
+    \(
+    a * b = b * a \ \forall a,b \in G.
+    \)
+}

@@ -1,0 +1,131 @@
+\subsection{Proof Systems}
+\tsDef{6.1 (Proof System)}{
+    A proof system is a quadruple
+    \(
+    \Pi = (\mathcal{S}, \mathcal{P}, \tau,\phi)
+    \)
+    where:
+    \begin{itemize}[noitemsep, topsep=0px]
+        \item $\mathcal{S}$ is a set of statements,
+        \item $\mathcal{P}$ is a set of proofs,
+        \item $\tau : \mathcal{S} \to \{0,1\}$ is a truth function,
+        \item $\varphi : \mathcal{S} \times \mathcal{P} \to \{0,1\}$ is a verification function.
+    \end{itemize}
+    A proof $p \in \mathcal{P}$ is \emph{valid} for a statement $s \in S$ if $\varphi(s,p)=1$.
+    A valid proof means it proves the statement.
+}
+\newline
+\tsDef{6.2 (Soundness)}{
+    A proof system is \emph{sound} if no false statement has a proof:
+    \(
+    \forall s \in \mathcal{S},\; \exists p \in \mathcal{P} \text{ with } \varphi(s,p)=1 \;\Rightarrow\; T(s)=1.
+    \)
+}
+\newline
+\tsDef{6.3 (Completeness)}{
+    A proof system is \emph{complete} if every true statement has a proof:
+    \(
+    \forall s \in \mathcal{S},\; T(s)=1 \;\Rightarrow\; \exists p \in \mathcal{P} \text{ with } \varphi(s,p)=1.
+    \)
+}
+\newline
+\tsDef{6.4 (Syntax and Semantics)}{
+    The \emph{syntax} of a logic defines an alphabet $\Lambda$ of allowed symbols and specifies which strings in $\Lambda^*$ are well-formed formulas.
+    \\
+    The \emph{semantics} describes under which conditions a formula is true ($1$) or false ($0$).
+    Syntax concerns form; semantics concerns meaning.
+    \\
+    Different syntactic expressions may have the same semantics, e.g.
+    \(
+    i := i+1 \quad \text{and} \quad i+ = 1.
+    \)
+}
+\newline
+\tsDef{6.5 (Free Variables)}{
+    The semantics of a logic assigns to each formula $F=(f_1,f_2,\dots,f_k) \in \Lambda^*$ a subset
+    \(
+    \mathrm{free}(F) \subseteq \{f_1,\dots,f_k\}
+    \)
+    of indices. If $i \in \mathrm{free}(F)$, then symbol $f_i$ occurs free in $F$.
+}
+\newline
+\tsDef{6.6 (Interpretation)}{
+    An interpretation consists of:
+    \(\tsPoint\) a set $Z \subseteq \Lambda$ of symbols,
+    \(\tsPoint\) a domain (a set of possible values),
+    \(\tsPoint\) a function assigning to each symbol in $Z$ a value in the domain.
+}
+\newline
+\tsDef{6.7 (Suitable Interpretation)}{
+    A suitable interpretation assigns a value to all symbols $p \in \Lambda$ occurring free in a formula $F$.
+}
+\newline
+\tsDef{6.8 (Truth Value)}{
+    The semantics of a logic defines a function assigning to each formula $F$ and each suitable interpretation $\mathcal{A}$ a truth value
+    \(
+    \mathcal{A}(F) \in \{0,1\}.
+    \)
+    We write $\mathcal{A}(F)$ for the truth value of $F$ under interpretation $\mathcal{A}$.
+}
+\newline
+\tsDef{6.9 (Model)}{
+    A suitable interpretation $\mathcal{A}$ for which a formula $F$ is true,
+    \(
+    \mathcal{A}(F)=1,
+    \)
+    is called a \emph{model} of $F$, written $\mathcal{A} \models F$.
+    \\
+    If $\mathcal{A}$ is a model for all formulas in a set $M$, we write $\mathcal{A} \models M$.
+}
+\newline
+\tsDef{6.10 (Satisfiability)}{
+    A formula $F$ is \emph{satisfiable} if it has a model.
+    It is \emph{unsatisfiable} otherwise.
+    The symbol $\bot$ denotes an unsatisfiable formula.
+}
+\newline
+\tsDef{6.11 (Tautology)}{
+    A formula $F$ is a \emph{tautology} if it is true under every suitable interpretation.
+    The symbol $\top$ denotes a tautology.
+}
+\newline
+\tsDef{6.12 (Logical Consequence)}{
+    Let $F$ be a set of formulas and $G$ a formula.
+    We say $G$ is a \emph{logical consequence} of $F$, written
+    \(
+    F \models G,
+    \)
+    if every interpretation that is a model of $F$ is also a model of $G$.
+}
+\newline
+\tsDef{6.13 (Logical Equivalence)}{
+    Formulas $F$ and $G$ are \emph{logically equivalent}, written $F \equiv G$, if
+    \(
+    F \models G \ \text{and} \ G \models F.
+    \)
+}
+\newline
+\tsDef{6.14}{
+    A formula $F$ is a tautology iff
+    \(
+    \models F.
+    \)
+    A formula $F$ is unsatisfiable iff
+    \(
+    F \equiv \bot.
+    \)
+}
+\newline
+\tsLem{6.2 (Formula is tautology iff neg. unsatisfiable)}{
+    $F$ is a tautology if and only if $\neg F$ is unsatisfiable.
+}
+\newline
+\tsLem{6.3 (Statements to prove the unsat. of formulas)}{
+    $\{F_1,\dots,F_n\} \models G$ if and only if
+    \(
+    (F_1 \land \dots \land F_n) \to G
+    \)
+    is a tautology and if and only if
+    $\{F_1, ..., F_k, \neg G\}$. Statement are equivalent.
+}
+\newline

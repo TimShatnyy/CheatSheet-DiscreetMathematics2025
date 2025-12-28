@@ -1,0 +1,125 @@
+\subsection{Rings and Fields}
+\tsDef{5.18 (Ring)}{
+    A \emph{ring} is a set $R$ together with two operations $+$ and $\cdot$ and elements $0,1 \in R$ such that:
+    \begin{enumerate}[noitemsep, topsep=-1px]
+        \item $\langle R, +, 0 \rangle$ is a commutative group,
+        \item $\langle R, \cdot, 1 \rangle$ is a monoid,
+        \item $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$ for all $a,b,c \in R$.
+    \end{enumerate}
+    A ring is called \emph{commutative} if multiplication is commutative.
+}
+\newline
+\tsLem{5.17 (Ring properties)}{
+    In any ring $R$:
+    \begin{enumerate}[noitemsep, topsep=-1px]
+        \item $0a = a0 = 0$,
+        \item $(-a)b = -(ab)$,
+        \item $(-a)(-b) = ab$,
+        \item If $R$ is non-trivial, then $1 \neq 0$.
+    \end{enumerate}
+}
+\tsDef{5.19 (Characteristic)}{
+    The \emph{characteristic} of a ring $R$ is the order of $1$ in the additive group if it is finite, otherwise the characteristic is defined to be $0$ (not infinite).
+    \\
+    That is,
+    \(
+    \underbrace{1+1+\cdots+1}_{n \text{ times}} = 0.
+    \)
+}
+\newline
+\tsDef{5.20 (Unit)}{
+    $u \in R$ is called a \emph{unit} if it is invertible, i.e.
+    \(
+    uv = vu = 1 \quad \text{for some } v \in R.
+    \)
+    The set of all units of $R$ is denoted by $R^*$.
+}
+\newline
+\tsLem{5.18 (Multiplicative group \(R^*\))}{
+    For a ring $R$, the set $R^*$ is the multiplicative group of units of $R$.
+}
+\newline
+\tsDef{5.21 (Divisibility)}{
+    For $a,b \in R$, we say that $a$ divides $b$, written $a \mid b$, if there exists $c \in R$ such that
+    \(
+    b = ac.
+    \)
+    In this case $a$ is called a divisor of $b$ and $b$ is called a multiple of $a$.
+}
+\newline
+% \tsLem{5.19}{
+%     In any commutative ring:
+%     \begin{enumerate}[noitemsep, topsep=-1px]
+%         \item $a \mid b$ and $b \mid c$ implies $a \mid c$,
+%         \item $a \mid b$ implies $a \mid bc$ for all $c$,
+%         \item $a \mid b$ and $a \mid c$ implies $a \mid (b+c)$.
+%     \end{enumerate}
+% }
+\tsDef{5.22 (Greatest Common Divisor)}{
+    For $a,b \in R$, $a,b \neq 0$, an element $d \in R$:
+    \\
+    \(
+    \bullet \
+    d \mid a \;\wedge\; d \mid b \;\wedge\;
+    \bigl(\forall c \, (c \mid a \wedge c \mid b \Rightarrow c \mid d)\bigr).
+    \)
+}
+\newline
+\tsDef{5.23 (Zero Divisor)}{
+    An element $a \neq 0$ of a commutative ring $R$ is called a \emph{zero divisor} if there exists $b \neq 0$ such that
+    \(
+    ab = 0.
+    \)
+}
+\newline
+\tsDef{5.24 (Integral Domain)}{
+    An integral domain $D$ is a non-trivial $(1 \neq 0)$ commutative ring without zero divisors. For all $a,b \in D$, $ab=0$ implies $a=0$ or $b=0$.
+    % \\
+    % Zero divisors can indicate such things as determinant without linear independence. For example, matrices over $\mathbb{Z}/6\mathbb{Z}$: let $A=\begin{pmatrix}2&0\\0&3\end{pmatrix}$, then $\det(A)=2\cdot3=6\equiv0$, hence $\det(A)=0$. In a field, $\det(A)=0$ if and only if linear dependence, since fields have no zero divisors. But in rings this fails; therefore $\det(A)=0$ does not imply linear dependence.
+}
+\newline
+\tsLem{5.20 (Cancellation Law)}{
+    In an integral domain, if $a \neq 0$ and $ab=ac$, then $b=c$. The element $c$ is unique and is called the quotient.
+    \(\tsPoint\)
+    Indeed, $a(b-c)=0$ implies $b-c=0$, hence $b=c$.
+}
+\newline
+\tsDef{5.25 (Polynomial)}{
+    A polynomial $a(x)$ over a commutative ring $R$ in the indet. $x$ is:
+    \\
+    $a(x)=a_dx^d+a_{d-1}x^{d-1}+\cdots+a_1x+a_0=\sum_{i=0}^d a_ix^i$, for some $d\ge1$ with $a_i\in R$.
+    \\
+    The degree $\deg(a(x))$ is the greatest $i$ for which $a_i\neq0$. The zero polynomial has degree $\deg(0)=-\infty$. $R[x]$ - set of polynom. in $x$ over $R$.
+}
+\newline
+\tsDef{5.25 (Polynomial Operations)}{
+    Polynomial addition: $a(x)+b(x)=\sum_{i\ge0}(a_i+b_i)x^i$.
+    \\
+    Polynomial multiplication: $a(x)b(x)=\sum_{i=0}^{d+e}\left(\sum_{k=0}^i a_k b_{i-k}\right)x^i$.
+    \\
+    The degree of the product is at most the sum of the degrees.
+}
+\newline
+\tsThe{5.21 (Polynomial ring preserves commutativity)}{
+    For any commutative ring $R$, $R[x]$ is a commutative ring.
+}
+\newline
+\tsLem{5.22 (Polynomial extension of an integral domain)}{
+    Let $D$ be an integral domain. Then (i) $D[x]$ is an integral domain, (ii) the degree of a product of two polynomials is the sum of their degrees, and (iii) the units of $D[x]$ are exactly the constant polynomials that are units in $D$, i.e.\ $D[x]^*=D^*$.
+}
+\newline
+\tsDef{5.26 (Field)}{
+    A field is a non-trivial commutative ring $F$ in which every non-zero element is a unit. Equivalently, $F^*=F\setminus\{0\}$, and $\langle F\setminus\{0\},\cdot,1\rangle$ is an abelian group.
+}
+\newline
+\tsThe{5.23 (Galois Field)}{
+    $\mathbb{Z}_p$ is a field if and only if $p$ is prime. Such fields are often called Galois fields.
+}
+\newline
+\tsThe{5.24 (Field is an integral domain)}{
+    Every field is an integral domain.
+}
+\newline
+\tsDef{5.27 (Monic Polynomial)}{
+    A polynomial is called monic if its leading coefficient is $1$.
+}

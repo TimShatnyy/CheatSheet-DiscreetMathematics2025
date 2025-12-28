@@ -1,0 +1,113 @@
+\subsection{Properties of Relations}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Name} & \textbf{Formula}                             & \textbf{Set} & \textbf{Example} \\
+        \midrule
+        Reflexive
+                      & $a\rho a$
+                      & $\mathrm{id} \subseteq \rho$
+                      & $\mathrm{id},\, \geq$                                                          \\
+
+        Irreflexive
+                      & $\neg(a\rho a)$
+                      & $\mathrm{id} \cap \rho = \varnothing$
+                      & $\neq,\, >$                                                                    \\
+
+        Symmetric
+                      & $a\rho b \iff b\rho a$
+                      & $\rho = \hat{\rho}$
+                      & $\mathrm{id},\, \equiv\ (\mathrm{mod}\ m)$                                     \\
+
+        Antisymmetric
+                      & $a\rho b \wedge b\rho a \rightarrow a=b$
+                      & $\rho \cap \hat{\rho} \subseteq \mathrm{id}$
+                      & $\geq,\, \mid$                                                                 \\
+
+        Transitive
+                      & $a\rho b \wedge b\rho c \rightarrow a\rho c$
+                      & $\rho^{2} \subseteq \rho$
+                      & $\equiv\ (\mathrm{mod}\ m),\, >$                                               \\
+        \bottomrule
+    \end{tabular}
+\end{center}
+% \tsDef{3.13 (Reflexive Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{reflexive} if
+%     \(
+%     \forall a \in A,\ a \,\rho\, a.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \mathrm{id}_A \subseteq \rho.
+%     \)
+% }
+% \newline
+% \tsDef{3.14 (Irreflexive Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{irreflexive} if
+%     \(
+%     \forall a \in A,\ a \not\!\rho\, a.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \rho \cap \mathrm{id}_A = \varnothing.
+%     \)
+% }
+% \newline
+% \tsDef{3.15 (Symmetric Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{symmetric} if
+%     \(
+%     a \,\rho\, b \;\Leftrightarrow\; b \,\rho\, a
+%     \ \forall a,b \in A.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \rho = \rho^{-1}.
+%     \)
+%     \\
+%     Interpretations:
+%     \begin{itemize}[noitemsep, topsep=-3pt]
+%         \item In matrix form: the matrix of $\rho$ is symmetric.
+%         \item In graphs: the graph is undirected (possibly with loops).
+%     \end{itemize}
+% }
+% \tsDef{3.16 (Antisymmetric Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{antisymmetric} if
+%     \(
+%     (a \,\rho\, b \;\wedge\; b \,\rho\, a) \;\Rightarrow\; a = b
+%     \ \forall a,b \in A.
+%     \)
+%     \\
+%     Equivalently,
+%     \(
+%     \rho \cap \rho^{-1} \subseteq \mathrm{id}_A.
+%     \)
+% }
+% \newline
+% \tsDef{3.17 (Transitive Relation)}{
+%     A relation $\rho$ on a set $A$ is called \emph{transitive} if
+%     \(
+%     (a \,\rho\, b \;\wedge\; b \,\rho\, c) \;\Longrightarrow\; a \,\rho\, c.
+%     \)
+% }
+% \newline
+% \newline
+\tsLem{3.9 (Transitivity and relation composition)}{
+    A relation $\rho$ is transitive if and only if
+    \(
+    \rho^2 \subseteq \rho,
+    \)
+    where $\rho^2 = \rho \circ \rho$.
+}
+\newline
+\tsDef{3.18 (Transitive Closure)}{
+    The \emph{transitive closure} of a relation $\rho$ on a set $A$, denoted $\rho^{*}$, is defined by
+    \(
+    \rho^{*} := \bigcup_{n \in \mathbb{N}_{>0}} \rho^{n}.
+    \)
+    For a transitive relation \(\rho\) we have \(\rho^2 \subseteq \rho\).
+}
+\newline
