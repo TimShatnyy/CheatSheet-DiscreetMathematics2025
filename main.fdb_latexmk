@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1766929398.10868 "/Users/timshatnyy/Documents/LaTeX (local)/_Cheat Sheet - Discreet Mathematics/main.tex" "main.pdf" "main" 1766929400.54589 0
+["pdflatex"] 1766932060.40657 "/Users/timshatnyy/Documents/LaTeX (local)/_Cheat Sheet - Discreet Mathematics/main.tex" "main.pdf" "main" 1766932062.7671 0
   "/Users/timshatnyy/Documents/LaTeX (local)/_Cheat Sheet - Discreet Mathematics/main.tex" 1766924299.86962 3620 2b592d0f1d98c949bdd432c4de242aed ""
   "/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1741388039 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20250308_2/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -266,9 +266,9 @@
   "_2-notesModularArithmetic.tex" 1766852701.18343 2090 c2996bba2d3f3ecc8580e1b22f2ecc75 ""
   "_3-notesAlgebra.tex" 1766852890.63546 3152 48da4d664ad7d8759214c659b50dc7bc ""
   "_4-notesLogic.tex" 1766835590.08396 1875 09b439572e956b8afa434a581c7509ff ""
-  "algorithms.tex" 1766929397.91364 3855 804dae73efc9de8f385dcdb5f5980f7d ""
-  "main.aux" 1766929400.43674 2813 f91534dda82f1a01139fc944af7a663a "pdflatex"
-  "main.out" 1766929400.43748 2773 0dbc0cdec46bb0024afce30adecba383 "pdflatex"
+  "algorithms.tex" 1766932060.17638 8113 a7db6065e0e193fcbfbcaaec6d7325ca ""
+  "main.aux" 1766932062.66045 2813 f91534dda82f1a01139fc944af7a663a "pdflatex"
+  "main.out" 1766932062.66125 2773 0dbc0cdec46bb0024afce30adecba383 "pdflatex"
   "main.tex" 1766924299.86962 3620 2b592d0f1d98c949bdd432c4de242aed ""
   (generated)
   "main.aux"
