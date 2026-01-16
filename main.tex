@@ -25,6 +25,7 @@
 \usepackage{booktabs}
 \usepackage{caption}
 
+\usepackage{anyfontsize}
 
 \titleformat{\section}
   {\fontsize{9pt}{11pt}\selectfont\bfseries}
@@ -151,35 +152,37 @@
 
 \begin{document}
 \begin{multicols}{3}
-    \setcounter{section}{2}
-    \section{Set, Relations, and Functions}
-    \input{3.1-sets}
-    \input{3.2-relations}
-    \input{3.3-propertiesOfRelations}
-    \input{3.4-equivalenceRelations}
-    \input{3.5-partialOrderRelations}
-    \input{3.6-functions}
-    \input{3.7-countableUncountableSets}
-    \section{Number Theory}
-    \input{4-numberTheory}
-    \section{Algebra}
-    \input{5.1-algebrasMonoidsAndGroups}
-    \input{5.2-structureOfGroups}
-    \input{5.3-ringsAndFields}
-    \input{5.4-polynomialsOverFields}
-    \input{5.5-polynomialsAsFunctions}
-    \section{Logic}
-    \input{6.1-proofSystems}
-    \input{6.2-logicalCalculi}
-    \input{6.3-propositionalLogic}
-    \newpage
-    \section*{Algorithms}
-    \input{algorithms}
-    \newpage
-    \section*{Notes from Correction}
-    \input{_1-notesSetsFunctions}
-    \input{_2-notesModularArithmetic}
-    \input{_3-notesAlgebra}
-    \input{_4-notesLogic}
+    {\fontsize{6}{7}\selectfont
+        \setcounter{section}{2}
+        \section{Set, Relations, and Functions}
+        \input{3.1-sets}
+        \input{3.2-relations}
+        \input{3.3-propertiesOfRelations}
+        \input{3.4-equivalenceRelations}
+        \input{3.5-partialOrderRelations}
+        \input{3.6-functions}
+        \input{3.7-countableUncountableSets}
+        \section{Number Theory}
+        \input{4-numberTheory}
+        \section{Algebra}
+        \input{5.1-algebrasMonoidsAndGroups}
+        \input{5.2-structureOfGroups}
+        \input{5.3-ringsAndFields}
+        \input{5.4-polynomialsOverFields}
+        \input{5.5-polynomialsAsFunctions}
+        \section{Logic}
+        \input{6.1-proofSystems}
+        \input{6.2-logicalCalculi}
+        \input{6.3-propositionalLogic}
+        \newpage
+        \section*{Algorithms}
+        \input{algorithms}
+        \newpage
+        \section*{Notes from Correction}
+        \input{_1-notesSetsFunctions}
+        \input{_2-notesModularArithmetic}
+        \input{_3-notesAlgebra}
+        \input{_4-notesLogic}
+    }
 \end{multicols}
 \end{document}
